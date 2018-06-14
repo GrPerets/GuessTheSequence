@@ -192,9 +192,10 @@ public class ResultsJPanel extends JPanel implements ActionListener {
                 default: {
                     //Новое окно игры
                     //gameJFrame.dispose();
-                    gameJFrame.removeAll();
+                    gameJFrame.remove(gameJFrame.getActionJPanel());
                     //gameJFrame.remove(gameJFrame.getActionJPanel());
                     gameJFrame.setVisible(false);
+                    
                     gameJFrame.setActionJPanel(gameJFrame.getStartJPanel());
                     gameJFrame.setVisible(true);
                     //EventQueue.invokeLater(new Runnable(){public void run(){GameFrame gameFrame = new GameFrame();}});
