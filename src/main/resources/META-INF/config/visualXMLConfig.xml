@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd"
+        default-lazy-init="true">
+    <import resource="logicalXMLConfig.xml" />
+    
+    
+        
+    <bean id="gameJFrame" class="com.mycompany.guessthesequence.visual.GameJFrame" >
+        <constructor-arg ref="gameJMenu" index="0" />
+        <property name="actionJPanel" ref="startJPanel" />    
+        <property name="startJPanel" ref="startJPanel" />
+        <property name="playJPanel" ref="playJPanel" />
+                
+    </bean>
+     
+     <bean id="gameJMenu" class="com.mycompany.guessthesequence.visual.GameJMenu" >
+     </bean>
+     
+    
+    
+    <bean id="collectionSizeJSlider" class="com.mycompany.guessthesequence.visual.CollectionSizeJSlider" >
+        <constructor-arg value="2" index="0" />
+        <constructor-arg value="#{levelOfPlay.getCollectionSize()}" index="1" />
+        <constructor-arg value="#{levelOfPlay.getCollectionSize()}" index="2" />
+        <property name="levelOfPlay" ref="levelOfPlay" />
+        <property name="defineSizeJSlider" ref="defineSizeJSlider" />
+    </bean>
+    
+    <bean id="defineSizeJSlider" class="com.mycompany.guessthesequence.visual.DefineSizeJSlider" >
+        <constructor-arg value="1" index="0" />
+        <constructor-arg value="#{levelOfPlay.getCollectionSize()}" index="1" />
+        <constructor-arg value="#{levelOfPlay.getDefineSize()}" index="2" />
+        <property name="levelOfPlay" ref="levelOfPlay" />
+        
+    </bean>
+    
+    <bean id="startJButton" class="javax.swing.JButton" />
+    <bean id="startJPanel" class="com.mycompany.guessthesequence.visual.StartJPanel">
+        
+        <property name="gameJFrame" ref="gameJFrame" />
+        <property name="startJButton" ref="startJButton" />
+        <property name="collectionSizeJSlider" ref="collectionSizeJSlider" />
+       <property name="defineSizeJSlider" ref="defineSizeJSlider" />
+    </bean>
+    
+    <bean id="playJPanel" class="com.mycompany.guessthesequence.visual.PlayJPanel" >
+        <!--<constructor-arg ref="buttonsJPanel" index="0" />
+        <constructor-arg ref="answersJPanel" index="1" />-->
+        <property name="randomCollection" ref="randomCollection" />
+        <property name="buttonsJPanel" ref="buttonsJPanel" />
+        <property name="answersJPanel" ref="answersJPanel" />
+        <property name="resultsJPanel" ref="resultsJPanel" />
+        <property name="levelOfPlay" ref="levelOfPlay" />
+        <property name="resultOfGuessing" ref="resultOfGuessing" />
+        
+    </bean>
+    
+    
+    
+    <bean id="buttonsJPanel" class="com.mycompany.guessthesequence.visual.ButtonsJPanel">
+        
+        <!--<constructor-arg ref="levelOfPlay" index="0" />-->
+        <!--<constructor-arg ref="answersJPanel" index="1" />-->
+        <property name="levelOfPlay" ref="levelOfPlay" />
+        <property name="answersJPanel" ref="answersJPanel" />
+        
+    </bean>
+    
+    <bean id="verifyJButton" class="javax.swing.JButton" >
+        <constructor-arg value="Проверить" index="0" />
+    </bean>
+    
+    <bean id="answersJPanel" class="com.mycompany.guessthesequence.visual.AnswersJPanel" >
+        <!--<constructor-arg ref="levelOfPlay" index="0" />-->
+        <!--<constructor-arg ref="buttonsJPanel" index="1" />-->
+        <property name="buttonsJPanel" ref="buttonsJPanel" />
+        <property name="resultsJPanel" ref="resultsJPanel" />
+        <property name="verifyJButton" ref="verifyJButton" />
+    </bean>
+    
+    <bean id="resultsJPanel" class="com.mycompany.guessthesequence.visual.ResultsJPanel" >
+        <property name="answersJPanel" ref="answersJPanel" />
+        <property name="levelOfPlay" ref="levelOfPlay" />
+        <property name="gameJFrame" ref="gameJFrame" />
+        
+        
+    </bean>
+
+</beans>
