@@ -32,7 +32,6 @@ public class AnswersJPanel extends JPanel implements ActionListener{
     private ResultsJPanel resultsJPanel;
     private LevelOfPlay levelOfPlay;
     private JButton verifyJButton;
-    private JPanel scrollAnswersJPanel;
     private AnswersJPanel answersJPanel;
 
     public AnswersJPanel() {
@@ -41,7 +40,13 @@ public class AnswersJPanel extends JPanel implements ActionListener{
         setLayout(gbl);
     }
 
-    public AnswersJPanel getAnswersJPanel(LevelOfPlay levelOfPlay) {
+    public AnswersJPanel getAnswersJPanel() {
+        
+        return answersJPanel;
+    }
+
+    public void setAnswersJPanel(LevelOfPlay levelOfPlay) {
+        this.answersJPanel = answersJPanel;
         button = new JButton[levelOfPlay.getDefineSize()];
         image = new ImageIcon(new ImageIcon(getClass().getClassLoader().getResource("images/question.jpeg")).getImage().getScaledInstance(80, 60, Image.SCALE_SMOOTH));
         
@@ -78,11 +83,6 @@ public class AnswersJPanel extends JPanel implements ActionListener{
         add(button[i]);
         button[i].addActionListener(this);
         }
-        return answersJPanel;
-    }
-
-    public void setAnswersJPanel(AnswersJPanel answersJPanel) {
-        this.answersJPanel = answersJPanel;
     }
     
     
