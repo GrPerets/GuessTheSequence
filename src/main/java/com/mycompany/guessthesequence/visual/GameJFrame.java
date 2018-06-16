@@ -58,14 +58,13 @@ public class GameJFrame extends JFrame implements ActionListener, InitializingBe
     }
 
     public JPanel getActionJPanel() {
-        add(actionJPanel);
-        setVisible(true);
         return actionJPanel;
     }
 
     public void setActionJPanel(JPanel actionJPanel) {
         this.actionJPanel = actionJPanel;
-        
+        add(actionJPanel);
+        setVisible(true);
     }
     
     public JPanel getStartJPanel() {
@@ -102,7 +101,7 @@ public class GameJFrame extends JFrame implements ActionListener, InitializingBe
         remove(this.actionJPanel);
         
         playJPanel.getButtonsJPanel().setButtonsJPanel(startJPanel.getCollectionSizeJSlider().getLevelOfPlay());
-        playJPanel.getAnswersJPanel().getAnswersJPanel(startJPanel.getCollectionSizeJSlider().getLevelOfPlay());
+        playJPanel.getAnswersJPanel().setAnswersJPanel(startJPanel.getCollectionSizeJSlider().getLevelOfPlay());
         playJPanel.getAnswersJPanel().getVerifyJButton();
         playJPanel.getRandomCollection().setRandomCollection(startJPanel.getCollectionSizeJSlider().getLevelOfPlay());
         
