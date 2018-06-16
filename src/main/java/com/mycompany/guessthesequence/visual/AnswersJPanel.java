@@ -112,8 +112,7 @@ public class AnswersJPanel extends JPanel implements ActionListener{
     public void setVerifyJButton(JButton verifyJButton) {
         this.verifyJButton = verifyJButton;
         //Кнопка проверки ответов
-        
-        
+                
         //Расположение на панели                
             //Значимость
         gbc.weightx = 0.0;
@@ -131,7 +130,7 @@ public class AnswersJPanel extends JPanel implements ActionListener{
         //Количество занимаемых ячеек
         if(levelOfPlay!=null){
             gbc.gridwidth = levelOfPlay.getDefineSize();
-        } else gbc.gridwidth = 4;
+        } else gbc.gridwidth = 1;
         gbc.gridheight = 1;
         //Заполнение ячейки
         gbc.fill = GridBagConstraints.BOTH;
@@ -142,6 +141,7 @@ public class AnswersJPanel extends JPanel implements ActionListener{
         verifyJButton.addActionListener(resultsJPanel);
         
         add(verifyJButton);
+        
     }
 
     public ResultsJPanel getResultsJPanel() {

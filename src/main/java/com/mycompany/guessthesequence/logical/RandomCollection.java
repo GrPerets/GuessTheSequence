@@ -14,13 +14,13 @@ import java.util.Random;
  * @author grperets
  */
 public class RandomCollection extends ArrayList{
-    private RandomCollection randomCollection;
-
+    
     public RandomCollection() {
                 
     }
 
-    public RandomCollection getRandomCollection(LevelOfPlay levelOfPlay) {
+    public void setRandomCollection(LevelOfPlay levelOfPlay) {
+        //this.randomCollection = randomCollection;
         Collection collectionElements= new ArrayList();
         
         for(int i=0;i<levelOfPlay.getCollectionSize();i++){
@@ -38,12 +38,6 @@ public class RandomCollection extends ArrayList{
                 arrayCollectionElements[randomPosition]=arrayCollectionElements[--collectionSize];
             }
         }
-        return randomCollection;
-    }
-
-    public void setRandomCollection(RandomCollection randomCollection) {
-        this.randomCollection = randomCollection;
-        
         
     }
        

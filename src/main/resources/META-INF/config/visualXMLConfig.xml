@@ -63,8 +63,6 @@
     
     <bean id="buttonsJPanel" class="com.mycompany.guessthesequence.visual.ButtonsJPanel">
         
-        <!--<constructor-arg ref="levelOfPlay" index="0" />-->
-        <!--<constructor-arg ref="answersJPanel" index="1" />-->
         <property name="levelOfPlay" ref="levelOfPlay" />
         <property name="answersJPanel" ref="answersJPanel" />
         
@@ -75,8 +73,7 @@
     </bean>
     
     <bean id="answersJPanel" class="com.mycompany.guessthesequence.visual.AnswersJPanel" >
-        <!--<constructor-arg ref="levelOfPlay" index="0" />-->
-        <!--<constructor-arg ref="buttonsJPanel" index="1" />-->
+        
         <property name="buttonsJPanel" ref="buttonsJPanel" />
         <property name="resultsJPanel" ref="resultsJPanel" />
         <property name="verifyJButton" ref="verifyJButton" />

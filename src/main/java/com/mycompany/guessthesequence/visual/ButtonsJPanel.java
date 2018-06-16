@@ -28,7 +28,7 @@ public class ButtonsJPanel extends JPanel implements ActionListener{
     private ImageIcon image;
     private JButton[] button;
     private AnswersJPanel answersJPanel;
-    private ButtonsJPanel buttonsJPanel;
+    
     private LevelOfPlay levelOfPlay;
     private ArrayList answersCollection;
 
@@ -39,8 +39,8 @@ public class ButtonsJPanel extends JPanel implements ActionListener{
         setLayout(gbl);
     }
     
-    public ButtonsJPanel getButtonsJPanel(LevelOfPlay levelOfPlay) {
-               
+    public void setButtonsJPanel(LevelOfPlay levelOfPlay) {
+        //this.buttonsJPanel = buttonsJPanel;
         button = new JButton[levelOfPlay.getCollectionSize()];
         for(int i=0;i<levelOfPlay.getCollectionSize();i++){
             image = new ImageIcon(new ImageIcon(getClass().getClassLoader().getResource(AllElements.values()[i].getUrlAddress())).getImage().getScaledInstance(80, 60, Image.SCALE_SMOOTH));
@@ -77,11 +77,6 @@ public class ButtonsJPanel extends JPanel implements ActionListener{
             button[i].addActionListener(this);
            
         }
-        return buttonsJPanel;
-    }
-
-    public void setButtonsJPanel(ButtonsJPanel buttonsJPanel) {
-        this.buttonsJPanel = buttonsJPanel;
     }
     
     public AnswersJPanel getAnswersJPanel() {

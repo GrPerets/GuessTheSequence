@@ -101,10 +101,11 @@ public class GameJFrame extends JFrame implements ActionListener, InitializingBe
     public void actionPerformed(ActionEvent e) {
         remove(this.actionJPanel);
         
-        playJPanel.getButtonsJPanel().getButtonsJPanel(startJPanel.getCollectionSizeJSlider().getLevelOfPlay());
+        playJPanel.getButtonsJPanel().setButtonsJPanel(startJPanel.getCollectionSizeJSlider().getLevelOfPlay());
         playJPanel.getAnswersJPanel().getAnswersJPanel(startJPanel.getCollectionSizeJSlider().getLevelOfPlay());
         playJPanel.getAnswersJPanel().getVerifyJButton();
-        playJPanel.getRandomCollection().getRandomCollection(startJPanel.getCollectionSizeJSlider().getLevelOfPlay());
+        playJPanel.getRandomCollection().setRandomCollection(startJPanel.getCollectionSizeJSlider().getLevelOfPlay());
+        
         
         
         setActionJPanel(playJPanel);
@@ -118,8 +119,8 @@ public class GameJFrame extends JFrame implements ActionListener, InitializingBe
     @Override
     public void afterPropertiesSet() throws Exception {
         
-        getActionJPanel();
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(getActionJPanel()!=null)getActionJPanel();
+        
     }
  
     
