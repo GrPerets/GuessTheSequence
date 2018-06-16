@@ -36,25 +36,12 @@ public class AnswersJPanel extends JPanel implements ActionListener{
     private AnswersJPanel answersJPanel;
 
     public AnswersJPanel() {
-        BorderLayout borderLayout = new BorderLayout();
-        setLayout(borderLayout);
-        
-        scrollAnswersJPanel = new JPanel();
         gbl = new GridBagLayout();
         gbc = new GridBagConstraints();
-        scrollAnswersJPanel.setLayout(gbl);
-        
-        JScrollPane scrollAnswersPane = new JScrollPane(scrollAnswersJPanel);
-        add(scrollAnswersPane);
+        setLayout(gbl);
     }
 
-    public AnswersJPanel getAnswersJPanel() {
-        return answersJPanel;
-    }
-
-    public void setAnswersJPanel(LevelOfPlay levelOfPlay) {
-        //this.answersJPanel = answersJPanel;
-        
+    public AnswersJPanel getAnswersJPanel(LevelOfPlay levelOfPlay) {
         button = new JButton[levelOfPlay.getDefineSize()];
         image = new ImageIcon(new ImageIcon(getClass().getClassLoader().getResource("images/question.jpeg")).getImage().getScaledInstance(80, 60, Image.SCALE_SMOOTH));
         
@@ -88,10 +75,14 @@ public class AnswersJPanel extends JPanel implements ActionListener{
         gbl.setConstraints(button[i], gbc);
             
                     
-        scrollAnswersJPanel.add(button[i]);
+        add(button[i]);
         button[i].addActionListener(this);
         }
-                
+        return answersJPanel;
+    }
+
+    public void setAnswersJPanel(AnswersJPanel answersJPanel) {
+        this.answersJPanel = answersJPanel;
     }
     
     
@@ -114,6 +105,7 @@ public class AnswersJPanel extends JPanel implements ActionListener{
     }
     
     public JButton getVerifyJButton() {
+        
         return verifyJButton;
     }
 
@@ -149,7 +141,7 @@ public class AnswersJPanel extends JPanel implements ActionListener{
         verifyJButton.setEnabled(false);
         verifyJButton.addActionListener(resultsJPanel);
         
-        scrollAnswersJPanel.add(verifyJButton);
+        add(verifyJButton);
     }
 
     public ResultsJPanel getResultsJPanel() {

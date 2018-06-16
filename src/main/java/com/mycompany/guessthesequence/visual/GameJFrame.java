@@ -12,12 +12,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import org.springframework.beans.factory.InitializingBean;
 
 /**
  *
  * @author grperets
  */
-public class GameJFrame extends JFrame implements ActionListener{
+public class GameJFrame extends JFrame implements ActionListener, InitializingBean{
     
     private Dimension dimension;
     private StartJPanel startJPanel;
@@ -38,10 +39,10 @@ public class GameJFrame extends JFrame implements ActionListener{
         setLocation(insets.right, insets.top);
         setTitle("Guess The Sequence");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-           
+         
+        
         
         //Главное меню
-       
         setJMenuBar(gameJMenu);
         
     }
@@ -57,13 +58,14 @@ public class GameJFrame extends JFrame implements ActionListener{
     }
 
     public JPanel getActionJPanel() {
+        add(actionJPanel);
+        setVisible(true);
         return actionJPanel;
     }
 
     public void setActionJPanel(JPanel actionJPanel) {
         this.actionJPanel = actionJPanel;
-        add(actionJPanel);
-        setVisible(true);
+        
     }
     
     public JPanel getStartJPanel() {
@@ -99,18 +101,25 @@ public class GameJFrame extends JFrame implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         remove(this.actionJPanel);
         
-        playJPanel.getButtonsJPanel().setButtonsJPanel(startJPanel.getCollectionSizeJSlider().getLevelOfPlay());
-        playJPanel.getAnswersJPanel().setAnswersJPanel(startJPanel.getCollectionSizeJSlider().getLevelOfPlay());
+        playJPanel.getButtonsJPanel().getButtonsJPanel(startJPanel.getCollectionSizeJSlider().getLevelOfPlay());
+        playJPanel.getAnswersJPanel().getAnswersJPanel(startJPanel.getCollectionSizeJSlider().getLevelOfPlay());
         playJPanel.getAnswersJPanel().getVerifyJButton();
-        playJPanel.getRandomCollection().setRandomCollection(startJPanel.getCollectionSizeJSlider().getLevelOfPlay());
-        //playJPanel.
+        playJPanel.getRandomCollection().getRandomCollection(startJPanel.getCollectionSizeJSlider().getLevelOfPlay());
+        
         
         setActionJPanel(playJPanel);
-        
+        getActionJPanel();
         //Начало отсчета времени
         setTimeStart(System.currentTimeMillis());
         
         
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        
+        getActionJPanel();
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
  
     

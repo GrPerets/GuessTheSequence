@@ -12,6 +12,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -27,6 +28,7 @@ public class PlayJPanel extends JPanel{
     private ResultsJPanel resultsJPanel;
     private LevelOfPlay levelOfPlay;
     private ResultOfGuessing resultOfGuessing;
+    private JScrollPane jScrollPane;
     
     
     
@@ -68,7 +70,7 @@ public class PlayJPanel extends JPanel{
 
     public void setButtonsJPanel(ButtonsJPanel buttonsJPanel) {
         this.buttonsJPanel = buttonsJPanel;
-        
+        jScrollPane = new JScrollPane(buttonsJPanel);
         //Расположение buttonsJPanel
         //Значимость
         gbc.weightx = 1.0;
@@ -89,9 +91,9 @@ public class PlayJPanel extends JPanel{
         //Заполнение ячейки
         gbc.fill = GridBagConstraints.BOTH;
 
-        gbl.setConstraints(buttonsJPanel, gbc);
+        gbl.setConstraints(jScrollPane, gbc);
               
-        add(buttonsJPanel);
+        add(jScrollPane);
     }
 
     public AnswersJPanel getAnswersJPanel() {
@@ -100,7 +102,7 @@ public class PlayJPanel extends JPanel{
 
     public void setAnswersJPanel(AnswersJPanel answersJPanel) {
         this.answersJPanel = answersJPanel;
-        
+        jScrollPane = new JScrollPane(answersJPanel);
         //Расположение answersJPanel
         //Значимость
         gbc.weightx = 1.5;
@@ -121,9 +123,9 @@ public class PlayJPanel extends JPanel{
         //Заполнение ячейки
         gbc.fill = GridBagConstraints.BOTH;
         
-        gbl.setConstraints(answersJPanel, gbc);
+        gbl.setConstraints(jScrollPane, gbc);
         
-        add(answersJPanel);
+        add(jScrollPane);
     }
 
     public ResultsJPanel getResultsJPanel() {
@@ -132,6 +134,7 @@ public class PlayJPanel extends JPanel{
 
     public void setResultsJPanel(ResultsJPanel resultsJPanel) {
         this.resultsJPanel = resultsJPanel;
+        
         //Расположение ResultsJPanel
         //Значимость
         gbc.weightx = 1.0;

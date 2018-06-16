@@ -17,43 +17,30 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 /**
  *
  * @author grperets
  */
 public class ButtonsJPanel extends JPanel implements ActionListener{
-    private final GridBagLayout gbl;
-    private final GridBagConstraints gbc;
+    private GridBagLayout gbl;
+    private GridBagConstraints gbc;
     private ImageIcon image;
     private JButton[] button;
     private AnswersJPanel answersJPanel;
-    private JPanel scrollButtonsJPanel;
     private ButtonsJPanel buttonsJPanel;
     private LevelOfPlay levelOfPlay;
     private ArrayList answersCollection;
-    
+
+   
     public ButtonsJPanel() {
-        BorderLayout borderLayout = new BorderLayout();
-        setLayout(borderLayout);
-        
-        scrollButtonsJPanel = new JPanel();
         gbl = new GridBagLayout();
         gbc = new GridBagConstraints();
-        scrollButtonsJPanel.setLayout(gbl);
-        
-        JScrollPane scrollButtonsPane = new JScrollPane(scrollButtonsJPanel);
-        add(scrollButtonsPane);
-               
+        setLayout(gbl);
     }
     
-    public ButtonsJPanel getButtonsJPanel() {
-        return buttonsJPanel;
-    }
-
-    public void setButtonsJPanel(LevelOfPlay levelOfPlay) {
-        //this.buttonsJPanel = buttonsJPanel;
+    public ButtonsJPanel getButtonsJPanel(LevelOfPlay levelOfPlay) {
+               
         button = new JButton[levelOfPlay.getCollectionSize()];
         for(int i=0;i<levelOfPlay.getCollectionSize();i++){
             image = new ImageIcon(new ImageIcon(getClass().getClassLoader().getResource(AllElements.values()[i].getUrlAddress())).getImage().getScaledInstance(80, 60, Image.SCALE_SMOOTH));
@@ -86,11 +73,15 @@ public class ButtonsJPanel extends JPanel implements ActionListener{
 
         gbl.setConstraints(button[i], gbc);
             
-            scrollButtonsJPanel.add(button[i]);
+            add(button[i]);
             button[i].addActionListener(this);
            
         }
-                
+        return buttonsJPanel;
+    }
+
+    public void setButtonsJPanel(ButtonsJPanel buttonsJPanel) {
+        this.buttonsJPanel = buttonsJPanel;
     }
     
     public AnswersJPanel getAnswersJPanel() {

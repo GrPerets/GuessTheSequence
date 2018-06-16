@@ -29,7 +29,7 @@ import javax.swing.JScrollPane;
 public class ResultsJPanel extends JPanel implements ActionListener {
     private final GridBagLayout gbl;
     private final GridBagConstraints gbc;
-    private final JPanel scrollResultsJPanel;
+    private JPanel scrollResultsJPanel;
     private long timeGame;
     private GameJFrame gameJFrame;
     
@@ -44,7 +44,7 @@ public class ResultsJPanel extends JPanel implements ActionListener {
     
     public ResultsJPanel() {
         BorderLayout borderLayout = new BorderLayout();
-        this.setLayout(borderLayout);
+        setLayout(borderLayout);
         JPanel titleJPanel = new JPanel();
         add(titleJPanel,BorderLayout.NORTH);
         GridLayout gridLayout = new GridLayout(1,0);
@@ -64,11 +64,12 @@ public class ResultsJPanel extends JPanel implements ActionListener {
         
         gbl = new GridBagLayout();
         gbc = new GridBagConstraints();
-        scrollResultsJPanel.setLayout(gbl);          
+        scrollResultsJPanel.setLayout(gbl); 
+       
+        scrollResultsJPanel.setLayout(gbl); 
+        
         
         JScrollPane scrollResultsPane = new JScrollPane(scrollResultsJPanel);
-        //автоскролинг
-        
         add(scrollResultsPane); 
         
           
