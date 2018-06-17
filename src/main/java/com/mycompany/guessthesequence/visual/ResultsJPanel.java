@@ -6,6 +6,8 @@
 package com.mycompany.guessthesequence.visual;
 
 import com.mycompany.guessthesequence.logical.LevelOfPlay;
+import com.mycompany.guessthesequence.records.JobWithBase;
+import com.mycompany.guessthesequence.records.Record;
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -39,7 +41,8 @@ public class ResultsJPanel extends JPanel implements ActionListener {
         
     
     private ResultsJPanel resultsJPanel;
-    
+    private Record record;
+    private JobWithBase jobWithBase;
     
     
     public ResultsJPanel() {
@@ -117,7 +120,24 @@ public class ResultsJPanel extends JPanel implements ActionListener {
     public void setGameJFrame(GameJFrame gameJFrame) {
         this.gameJFrame = gameJFrame;
     }
+
+    public Record getRecord() {
+        return record;
+    }
+
+    public void setRecord(Record record) {
+        this.record = record;
+    }
+
+    public JobWithBase getJobWithBase() {
+        return jobWithBase;
+    }
+
+    public void setJobWithBase(JobWithBase jobWithBase) {
+        this.jobWithBase = jobWithBase;
+    }
         
+    
     
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -187,6 +207,13 @@ public class ResultsJPanel extends JPanel implements ActionListener {
             int response = JOptionPane.showConfirmDialog(null,"Поздравляем!\nВаш результат: "+timeGame+" c. Хотите сохранить?", "Победа!", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
             switch (response){
                 case (JOptionPane.YES_OPTION):{
+                    String nameGamer = (String)JOptionPane.showInputDialog(null,"Ваше имя:", "Сохранение результатов", JOptionPane.PLAIN_MESSAGE, null, null, "Ваше имя");
+                    record.setNameGamer(nameGamer);
+                    record.setDefineSize(levelOfPlay.getDefineSize());
+                    record.setCollectionSize(levelOfPlay.getCollectionSize());
+                    record.setTimeGame(timeGame);
+                    jobWithBase.insert(record);
+                    
                     //SaveResultsGame saveResultsGame = new SaveResultsGame(gamePanel, timeGame);
                     break;
                 }

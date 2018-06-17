@@ -19,6 +19,7 @@ Any value defined here will override the pom.xml file value but is only applicab
         <config-files>
             <config-file>src/main/resources/META-INF/config/logicalXMLConfig.xml</config-file>
             <config-file>src/main/resources/META-INF/config/visualXMLConfig.xml</config-file>
+            <config-file>src/main/resources/META-INF/config/recordsXMLConfig.xml</config-file>
         </config-files>
         <config-file-groups/>
     </spring-data>

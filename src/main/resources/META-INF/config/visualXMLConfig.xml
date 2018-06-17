@@ -6,7 +6,7 @@
             http://www.springframework.org/schema/beans/spring-beans.xsd"
         default-lazy-init="true">
     <import resource="logicalXMLConfig.xml" />
-    
+    <import resource="recordsXMLConfig.xml" />
     
         
     <bean id="gameJFrame" class="com.mycompany.guessthesequence.visual.GameJFrame" >
@@ -83,7 +83,8 @@
         <property name="answersJPanel" ref="answersJPanel" />
         <property name="levelOfPlay" ref="levelOfPlay" />
         <property name="gameJFrame" ref="gameJFrame" />
-        
+        <property name="record" ref="record" />
+        <property name="jobWithBase" ref="jobWithBase" />
         
     </bean>
 
