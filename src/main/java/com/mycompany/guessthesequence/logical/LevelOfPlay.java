@@ -11,7 +11,7 @@ import org.springframework.beans.factory.InitializingBean;
  *
  * @author grperets
  */
-public class LevelOfPlay implements InitializingBean{
+public class LevelOfPlay implements DifficultyOfGame, InitializingBean{
     private int defineSize;
     private int collectionSize;
 
@@ -19,18 +19,22 @@ public class LevelOfPlay implements InitializingBean{
     }
      
     
+    @Override
     public int getCollectionSize() {
         return collectionSize;
     }
 
+    @Override
     public void setCollectionSize(int collectionSize) {
         this.collectionSize = collectionSize;
     }
 
+    @Override
     public int getDefineSize() {
         return defineSize;
     }
 
+    @Override
     public void setDefineSize(int defineSize) {
         this.defineSize = defineSize;
     }
@@ -39,7 +43,6 @@ public class LevelOfPlay implements InitializingBean{
     public void afterPropertiesSet() throws Exception {
         if(defineSize==0)defineSize=4;
         if(collectionSize==0)collectionSize=10;
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
    
     

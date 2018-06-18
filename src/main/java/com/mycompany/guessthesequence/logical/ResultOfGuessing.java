@@ -11,9 +11,11 @@ import java.util.Collection;
  *
  * @author grperets
  */
-public class ResultOfGuessing {
+public class ResultOfGuessing implements ComparisonOfCollections{
     private int guessedElements; //Угадано елементов
     private int positionElements; //Елементы на своих местах
+    private int sameElements;
+    private int inTheirPlaces;
     
     public ResultOfGuessing() {
     
@@ -46,6 +48,16 @@ public class ResultOfGuessing {
                 }
             }
         } 
+    }
+
+    @Override
+    public int getSameElements() {
+        return sameElements;        
+    }
+
+    @Override
+    public int getInTheirPlaces() {
+        return inTheirPlaces;
     }
    
 }

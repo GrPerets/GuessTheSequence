@@ -5,12 +5,14 @@
  */
 package com.mycompany.guessthesequence.visual;
 
+import com.mycompany.guessthesequence.logical.DifficultyOfGame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSlider;
 
 
 /**
@@ -20,11 +22,12 @@ import javax.swing.JPanel;
 public class StartJPanel extends JPanel{
     
     private final GridBagLayout gbl;
-    private final GridBagConstraints gbc;    
-    private DefineSizeJSlider defineSizeJSlider;
-    private CollectionSizeJSlider collectionSizeJSlider;    
+    private final GridBagConstraints gbc;  
+    private JSlider defineSizeJSlider;
+    private JSlider collectionSizeJSlider;    
     private JButton startJButton;
     private GameJFrame gameJFrame;
+    private DifficultyOfGame difficultyOfGame;
     
     
        
@@ -73,8 +76,17 @@ public class StartJPanel extends JPanel{
         
                 
     }
+
+    public DifficultyOfGame getDifficultyOfGame() {
+        return difficultyOfGame;
+    }
+
+    public void setDifficultyOfGame(DifficultyOfGame difficultyOfGame) {
+        this.difficultyOfGame = difficultyOfGame;
+    }
     
 
+    
     public GameJFrame getGameJFrame() {
         return gameJFrame;
     }
@@ -83,7 +95,7 @@ public class StartJPanel extends JPanel{
         this.gameJFrame = gameJFrame;
     }
 
-    public CollectionSizeJSlider getCollectionSizeJSlider() {
+    public JSlider getCollectionSizeJSlider() {
         return collectionSizeJSlider;
     }
 
@@ -130,7 +142,7 @@ public class StartJPanel extends JPanel{
         
     }
 
-    public DefineSizeJSlider getDefineSizeJSlider() {
+    public JSlider getDefineSizeJSlider() {
         return defineSizeJSlider;
     }
 

@@ -5,6 +5,7 @@
  */
 package com.mycompany.guessthesequence.visual;
 
+import com.mycompany.guessthesequence.logical.DifficultyOfGame;
 import com.mycompany.guessthesequence.logical.LevelOfPlay;
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
@@ -30,7 +31,7 @@ public class AnswersJPanel extends JPanel implements ActionListener{
     private JButton[] button;
     private ButtonsJPanel buttonsJPanel;
     private ResultsJPanel resultsJPanel;
-    private LevelOfPlay levelOfPlay;
+    private DifficultyOfGame difficultyOfGame;
     private JButton verifyJButton;
     private AnswersJPanel answersJPanel;
 
@@ -45,12 +46,12 @@ public class AnswersJPanel extends JPanel implements ActionListener{
         return answersJPanel;
     }
 
-    public void setAnswersJPanel(LevelOfPlay levelOfPlay) {
+    public void setAnswersJPanel(DifficultyOfGame difficultyOfGame) {
         this.answersJPanel = answersJPanel;
-        button = new JButton[levelOfPlay.getDefineSize()];
+        button = new JButton[difficultyOfGame.getDefineSize()];
         image = new ImageIcon(new ImageIcon(getClass().getClassLoader().getResource("images/question.jpeg")).getImage().getScaledInstance(80, 60, Image.SCALE_SMOOTH));
         
-        for(int i=0;i<levelOfPlay.getDefineSize();i++){
+        for(int i=0;i<difficultyOfGame.getDefineSize();i++){
             if(image!=null){
                 button[i] = new JButton(image);
             } else {button[i] = new JButton("?");}
@@ -96,13 +97,15 @@ public class AnswersJPanel extends JPanel implements ActionListener{
         
     }
 
-    public LevelOfPlay getLevelOfPlay() {
-        return levelOfPlay;
+    public DifficultyOfGame getDifficultyOfGame() {
+        return difficultyOfGame;
     }
 
-    public void setLevelOfPlay(LevelOfPlay levelOfPlay) {
-        this.levelOfPlay = levelOfPlay;
+    public void setDifficultyOfGame(DifficultyOfGame difficultyOfGame) {
+        this.difficultyOfGame = difficultyOfGame;
     }
+
+    
     
     public JButton getVerifyJButton() {
         
@@ -128,8 +131,8 @@ public class AnswersJPanel extends JPanel implements ActionListener{
         gbc.gridx = 0;
         gbc.gridy = 1;
         //Количество занимаемых ячеек
-        if(levelOfPlay!=null){
-            gbc.gridwidth = levelOfPlay.getDefineSize();
+        if(difficultyOfGame!=null){
+            gbc.gridwidth = difficultyOfGame.getDefineSize();
         } else gbc.gridwidth = 1;
         gbc.gridheight = 1;
         //Заполнение ячейки

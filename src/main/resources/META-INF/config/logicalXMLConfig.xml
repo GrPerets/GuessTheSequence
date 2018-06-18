@@ -6,15 +6,18 @@
             http://www.springframework.org/schema/beans/spring-beans.xsd"
             default-lazy-init="true">
     <bean id="levelOfPlay" class="com.mycompany.guessthesequence.logical.LevelOfPlay" >
-        
+    </bean>
+    <bean id="difficultyOfGame" class="com.mycompany.guessthesequence.logical.LevelOfPlay" >
     </bean>
             
     <bean id="randomCollection" class="com.mycompany.guessthesequence.logical.RandomCollection"  >
-                                
     </bean> 
-        
+    <bean id="collectionElements" class="com.mycompany.guessthesequence.logical.RandomCollection"  >
+    </bean> 
+            
     <bean id="resultOfGuessing" class="com.mycompany.guessthesequence.logical.ResultOfGuessing">
-               
     </bean>
-
+    <bean id="comparisonOfCollections" class="com.mycompany.guessthesequence.logical.ResultOfGuessing">
+    </bean>
+    
 </beans>

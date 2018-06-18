@@ -100,10 +100,10 @@ public class GameJFrame extends JFrame implements ActionListener, InitializingBe
     public void actionPerformed(ActionEvent e) {
         remove(this.actionJPanel);
         
-        playJPanel.getButtonsJPanel().setButtonsJPanel(startJPanel.getCollectionSizeJSlider().getLevelOfPlay());
-        playJPanel.getAnswersJPanel().setAnswersJPanel(startJPanel.getCollectionSizeJSlider().getLevelOfPlay());
-        playJPanel.getAnswersJPanel().getVerifyJButton();
-        playJPanel.getRandomCollection().setRandomCollection(startJPanel.getCollectionSizeJSlider().getLevelOfPlay());
+        playJPanel.getButtonsJPanel().setButtonsJPanel(startJPanel.getDifficultyOfGame());
+        playJPanel.getAnswersJPanel().setAnswersJPanel(startJPanel.getDifficultyOfGame());
+        //playJPanel.getAnswersJPanel().getVerifyJButton();
+        //playJPanel.getRandomCollection().setRandomCollection(startJPanel.getCollectionSizeJSlider().getLevelOfPlay());
         
         
         

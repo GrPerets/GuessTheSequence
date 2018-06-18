@@ -13,12 +13,35 @@ import java.util.Random;
  *
  * @author grperets
  */
-public class RandomCollection extends ArrayList{
+public class RandomCollection extends ArrayList implements CollectionElements{
+    
+    private Collection collectionElements;
     
     public RandomCollection() {
                 
     }
-
+/*
+    public void setRandomCollection(LevelOfPlay levelOfPlay) {
+        //this.randomCollection = randomCollection;
+        Collection collectionElements= new ArrayList();
+        
+        for(int i=0;i<levelOfPlay.getCollectionSize();i++){
+            collectionElements.add(i);
+        }
+                
+        if(!collectionElements.isEmpty()){
+            int collectionSize=collectionElements.size();
+        
+            Object[] arrayCollectionElements=collectionElements.toArray();
+        
+            for(int i=0; i < levelOfPlay.getDefineSize();i++){
+                int randomPosition = new Random().nextInt(collectionSize);
+                add(arrayCollectionElements[randomPosition]);
+                arrayCollectionElements[randomPosition]=arrayCollectionElements[--collectionSize];
+            }
+        }
+        
+    }*/
     public void setRandomCollection(LevelOfPlay levelOfPlay) {
         //this.randomCollection = randomCollection;
         Collection collectionElements= new ArrayList();
@@ -40,5 +63,9 @@ public class RandomCollection extends ArrayList{
         }
         
     }
-       
+
+    @Override
+    public Collection getCollectionElements() {
+        return collectionElements;
+    }
 }

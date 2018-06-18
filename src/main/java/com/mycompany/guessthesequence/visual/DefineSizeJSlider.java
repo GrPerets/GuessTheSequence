@@ -5,6 +5,7 @@
  */
 package com.mycompany.guessthesequence.visual;
 
+import com.mycompany.guessthesequence.logical.DifficultyOfGame;
 import com.mycompany.guessthesequence.logical.LevelOfPlay;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
@@ -14,8 +15,8 @@ import javax.swing.event.ChangeEvent;
  * @author grperets
  */
 public class DefineSizeJSlider extends JSlider{
-    private LevelOfPlay levelOfPlay;
-    private CollectionSizeJSlider collectionSizeJSlider;
+    private DifficultyOfGame difficultyOfGame;
+    
 
     public DefineSizeJSlider(int min, int max, int value) {
         super(min, max, value);
@@ -29,17 +30,19 @@ public class DefineSizeJSlider extends JSlider{
                 
         addChangeListener((ChangeEvent ce) -> {
             if(getValueIsAdjusting()) return;
-            this.levelOfPlay.setDefineSize(getValue());
+            this.difficultyOfGame.setDefineSize(getValue());
         });
     }
 
-    public LevelOfPlay getLevelOfPlay() {
-        return levelOfPlay;
+    public DifficultyOfGame getDifficultyOfGame() {
+        return difficultyOfGame;
     }
 
-    public void setLevelOfPlay(LevelOfPlay levelOfPlay) {
-        this.levelOfPlay = levelOfPlay;
+    public void setDifficultyOfGame(DifficultyOfGame difficultyOfGame) {
+        this.difficultyOfGame = difficultyOfGame;
     }
+
+    
        
     
 }

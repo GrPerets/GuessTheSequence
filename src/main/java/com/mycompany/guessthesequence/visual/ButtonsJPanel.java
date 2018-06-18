@@ -5,6 +5,7 @@
  */
 package com.mycompany.guessthesequence.visual;
 
+import com.mycompany.guessthesequence.logical.DifficultyOfGame;
 import com.mycompany.guessthesequence.logical.LevelOfPlay;
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
@@ -29,7 +30,7 @@ public class ButtonsJPanel extends JPanel implements ActionListener{
     private JButton[] button;
     private AnswersJPanel answersJPanel;
     
-    private LevelOfPlay levelOfPlay;
+    private DifficultyOfGame difficultyOfGame;
     private ArrayList answersCollection;
 
    
@@ -39,10 +40,10 @@ public class ButtonsJPanel extends JPanel implements ActionListener{
         setLayout(gbl);
     }
     
-    public void setButtonsJPanel(LevelOfPlay levelOfPlay) {
+    public void setButtonsJPanel(DifficultyOfGame difficultyOfGame) {
         //this.buttonsJPanel = buttonsJPanel;
-        button = new JButton[levelOfPlay.getCollectionSize()];
-        for(int i=0;i<levelOfPlay.getCollectionSize();i++){
+        button = new JButton[difficultyOfGame.getCollectionSize()];
+        for(int i=0;i<difficultyOfGame.getCollectionSize();i++){
             image = new ImageIcon(new ImageIcon(getClass().getClassLoader().getResource(AllElements.values()[i].getUrlAddress())).getImage().getScaledInstance(80, 60, Image.SCALE_SMOOTH));
             
             if(image!=null){
@@ -88,13 +89,15 @@ public class ButtonsJPanel extends JPanel implements ActionListener{
                
     }
 
-    public LevelOfPlay getLevelOfPlay() {
-        return levelOfPlay;
+    public DifficultyOfGame getDifficultyOfGame() {
+        return difficultyOfGame;
     }
 
-    public void setLevelOfPlay(LevelOfPlay levelOfPlay) {
-        this.levelOfPlay = levelOfPlay;
+    public void setDifficultyOfGame(DifficultyOfGame difficultyOfGame) {
+        this.difficultyOfGame = difficultyOfGame;
     }
+
+    
 
     public JButton[] getButton() {
         return button;
@@ -113,7 +116,7 @@ public class ButtonsJPanel extends JPanel implements ActionListener{
         JButton actionButton = (JButton)e.getSource();
         
                
-        for(int i=0;i<levelOfPlay.getDefineSize();i++){
+        for(int i=0;i<difficultyOfGame.getDefineSize();i++){
             if(answersJPanel.getButton()[i].getActionCommand().equals("default")){ 
                 image = new ImageIcon(new ImageIcon(getClass().getClassLoader().getResource(AllElements.values()[Integer.valueOf(e.getActionCommand())].getUrlAddress())).getImage().getScaledInstance(80, 60, Image.SCALE_SMOOTH));
                 if(image!=null){
