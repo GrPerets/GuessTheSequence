@@ -13,59 +13,40 @@ import java.util.Random;
  *
  * @author grperets
  */
-public class RandomCollection extends ArrayList implements CollectionElements{
+public class RandomCollection implements CollectionElements{
     
-    private Collection collectionElements;
+    private Object[] randomCollectionElements;
     
     public RandomCollection() {
                 
     }
-/*
-    public void setRandomCollection(LevelOfPlay levelOfPlay) {
-        //this.randomCollection = randomCollection;
-        Collection collectionElements= new ArrayList();
-        
-        for(int i=0;i<levelOfPlay.getCollectionSize();i++){
-            collectionElements.add(i);
-        }
-                
-        if(!collectionElements.isEmpty()){
-            int collectionSize=collectionElements.size();
-        
-            Object[] arrayCollectionElements=collectionElements.toArray();
-        
-            for(int i=0; i < levelOfPlay.getDefineSize();i++){
-                int randomPosition = new Random().nextInt(collectionSize);
-                add(arrayCollectionElements[randomPosition]);
-                arrayCollectionElements[randomPosition]=arrayCollectionElements[--collectionSize];
-            }
-        }
-        
-    }*/
-    public void setRandomCollection(LevelOfPlay levelOfPlay) {
-        //this.randomCollection = randomCollection;
-        Collection collectionElements= new ArrayList();
-        
-        for(int i=0;i<levelOfPlay.getCollectionSize();i++){
-            collectionElements.add(i);
-        }
-                
-        if(!collectionElements.isEmpty()){
-            int collectionSize=collectionElements.size();
-        
-            Object[] arrayCollectionElements=collectionElements.toArray();
-        
-            for(int i=0; i < levelOfPlay.getDefineSize();i++){
-                int randomPosition = new Random().nextInt(collectionSize);
-                add(arrayCollectionElements[randomPosition]);
-                arrayCollectionElements[randomPosition]=arrayCollectionElements[--collectionSize];
-            }
-        }
-        
+    
+    @Override
+    public Object[] getCollectionElements() {
+        return randomCollectionElements;
     }
 
-    @Override
-    public Collection getCollectionElements() {
-        return collectionElements;
+    public void setCollectionElements(LevelOfPlay levelOfPlay) {
+        //this.collectionElements = collectionElements;
+        randomCollectionElements = new Object[levelOfPlay.getDefineSize()];
+        Object[] collectionElements = new Object[levelOfPlay.getCollectionSize()];
+        
+        for(int i=0;i<collectionElements.length;i++){
+            collectionElements[i]=i;
+        }
+                
+        if(collectionElements!=null){
+            int collectionSize=collectionElements.length;
+        
+            //Object[] arrayCollectionElements=collectionElements.toArray();
+        
+            for(int i=0; i < randomCollectionElements.length;i++){
+                int randomPosition = new Random().nextInt(collectionSize);
+                randomCollectionElements[i]=collectionElements[randomPosition];
+                collectionElements[randomPosition]=collectionElements[--collectionSize];
+            }
+        }
+        
     }
+           
 }

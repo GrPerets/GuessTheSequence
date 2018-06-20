@@ -5,6 +5,7 @@
  */
 package com.mycompany.guessthesequence.visual;
 
+import com.mycompany.guessthesequence.logical.LevelOfPlay;
 import java.awt.Dimension;
 import java.awt.Insets;
 import java.awt.Toolkit;
@@ -24,7 +25,7 @@ public class GameJFrame extends JFrame implements ActionListener, InitializingBe
     private StartJPanel startJPanel;
     private PlayJPanel playJPanel;
     private JPanel actionJPanel;
-    
+    private LevelOfPlay levelOfPlay;
     
     
     private long timeStart;
@@ -46,17 +47,16 @@ public class GameJFrame extends JFrame implements ActionListener, InitializingBe
         setJMenuBar(gameJMenu);
         
     }
+
+    public LevelOfPlay getLevelOfPlay() {
+        return levelOfPlay;
+    }
+
+    public void setLevelOfPlay(LevelOfPlay levelOfPlay) {
+        this.levelOfPlay = levelOfPlay;
+    }
     
-     
-
-    public Dimension getDimension() {
-        return dimension;
-    }
-
-    public void setDimension(Dimension dimension) {
-        this.dimension = dimension;
-    }
-
+    
     public JPanel getActionJPanel() {
         return actionJPanel;
     }
@@ -66,14 +66,13 @@ public class GameJFrame extends JFrame implements ActionListener, InitializingBe
         add(actionJPanel);
         setVisible(true);
     }
-    
-    public JPanel getStartJPanel() {
+
+    public StartJPanel getStartJPanel() {
         return startJPanel;
     }
 
     public void setStartJPanel(StartJPanel startJPanel) {
         this.startJPanel = startJPanel;
-        
     }
 
     public PlayJPanel getPlayJPanel() {
@@ -83,6 +82,8 @@ public class GameJFrame extends JFrame implements ActionListener, InitializingBe
     public void setPlayJPanel(PlayJPanel playJPanel) {
         this.playJPanel = playJPanel;
     }
+    
+    
    
 
     public long getTimeStart() {
@@ -100,14 +101,15 @@ public class GameJFrame extends JFrame implements ActionListener, InitializingBe
     public void actionPerformed(ActionEvent e) {
         remove(this.actionJPanel);
         
-        playJPanel.getButtonsJPanel().setButtonsJPanel(startJPanel.getDifficultyOfGame());
-        playJPanel.getAnswersJPanel().setAnswersJPanel(startJPanel.getDifficultyOfGame());
+       
+        playJPanel.getButtonsJPanel().setButtonsJPanel(levelOfPlay);
+        playJPanel.getAnswersJPanel().setAnswersJPanel(levelOfPlay);
         //playJPanel.getAnswersJPanel().getVerifyJButton();
         //playJPanel.getRandomCollection().setRandomCollection(startJPanel.getCollectionSizeJSlider().getLevelOfPlay());
         
         
         
-        setActionJPanel(playJPanel);
+        setActionJPanel(playJPanel.getPlayJPanel());
         getActionJPanel();
         //Начало отсчета времени
         setTimeStart(System.currentTimeMillis());
@@ -117,8 +119,9 @@ public class GameJFrame extends JFrame implements ActionListener, InitializingBe
 
     @Override
     public void afterPropertiesSet() throws Exception {
+        setActionJPanel(startJPanel.getStartJPanel());
         
-        if(getActionJPanel()!=null)getActionJPanel();
+        //if(getActionJPanel()!=null)getActionJPanel();
         
     }
  

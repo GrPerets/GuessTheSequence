@@ -5,13 +5,11 @@
  */
 package com.mycompany.guessthesequence.logical;
 
-import java.util.Collection;
-
 /**
  *
  * @author grperets
  */
 public interface CollectionElements {
-    Collection getCollectionElements();
+    Object[] getCollectionElements();
     
 }

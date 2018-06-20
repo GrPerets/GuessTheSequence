@@ -5,46 +5,14 @@
  */
 package com.mycompany.guessthesequence.logical;
 
-import org.springframework.beans.factory.InitializingBean;
-
 /**
  *
  * @author grperets
  */
-public class LevelOfPlay implements DifficultyOfGame, InitializingBean{
-    private int defineSize;
-    private int collectionSize;
-
-    public LevelOfPlay() {
-    }
-     
-    
-    @Override
-    public int getCollectionSize() {
-        return collectionSize;
-    }
-
-    @Override
-    public void setCollectionSize(int collectionSize) {
-        this.collectionSize = collectionSize;
-    }
-
-    @Override
-    public int getDefineSize() {
-        return defineSize;
-    }
-
-    @Override
-    public void setDefineSize(int defineSize) {
-        this.defineSize = defineSize;
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        if(defineSize==0)defineSize=4;
-        if(collectionSize==0)collectionSize=10;
-    }
-   
-    
+public interface LevelOfPlay {
+    int getDefineSize();
+    int getCollectionSize();
+    void setDefineSize(int defineSize);
+    void setCollectionSize(int collectionSize);
     
 }

@@ -5,15 +5,16 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
             http://www.springframework.org/schema/beans/spring-beans.xsd"
         default-lazy-init="true">
-    <import resource="logicalXMLConfig.xml" />
-    <import resource="recordsXMLConfig.xml" />
+    <import resource="classpath:META-INF/config/logicalXMLConfig.xml" />
+    <import resource="classpath:META-INF/config/recordsXMLConfig.xml" />
     
         
     <bean id="gameJFrame" class="com.mycompany.guessthesequence.visual.GameJFrame" >
         <constructor-arg ref="gameJMenu" index="0" />
-        <property name="actionJPanel" ref="startJPanel" />    
+        <!--<property name="actionJPanel" ref="startJPanel" />    -->
         <property name="startJPanel" ref="startJPanel" />
         <property name="playJPanel" ref="playJPanel" />
+        <property name="levelOfPlay" ref="levelOfPlay" />
                 
     </bean>
      
@@ -26,45 +27,45 @@
         <constructor-arg value="2" index="0" />
         <constructor-arg value="10" index="1" />
         <constructor-arg value="10" index="2" />
-        <property name="difficultyOfGame" ref="difficultyOfGame" />
+        <property name="levelOfPlay" ref="levelOfPlay" />
         <property name="defineSizeJSlider" ref="defineSizeJSlider" />
     </bean>
+    
+     
     
     <bean id="defineSizeJSlider" class="com.mycompany.guessthesequence.visual.DefineSizeJSlider" >
         <constructor-arg value="1" index="0" />
         <constructor-arg value="10" index="1" />
         <constructor-arg value="4" index="2" />
-        <property name="difficultyOfGame" ref="difficultyOfGame" />
+        <property name="levelOfPlay" ref="levelOfPlay" />
         
     </bean>
     
+    
+    
     <bean id="startJButton" class="javax.swing.JButton" />
-    <bean id="startJPanel" class="com.mycompany.guessthesequence.visual.StartJPanel">
+    <bean id="startJPanel" class="com.mycompany.guessthesequence.visual.StartJPanelImpl">
         
         <property name="gameJFrame" ref="gameJFrame" />
         <property name="startJButton" ref="startJButton" />
         <property name="collectionSizeJSlider" ref="collectionSizeJSlider" />
        <property name="defineSizeJSlider" ref="defineSizeJSlider" />
-       <property name="difficultyOfGame" ref="difficultyOfGame" />
+       
     </bean>
     
-    <bean id="playJPanel" class="com.mycompany.guessthesequence.visual.PlayJPanel" >
-        <!--<constructor-arg ref="buttonsJPanel" index="0" />
-        <constructor-arg ref="answersJPanel" index="1" />-->
-        <property name="randomCollection" ref="randomCollection" />
+    <bean id="playJPanel" class="com.mycompany.guessthesequence.visual.PlayJPanelImpl" >
+        
         <property name="buttonsJPanel" ref="buttonsJPanel" />
         <property name="answersJPanel" ref="answersJPanel" />
         <property name="resultsJPanel" ref="resultsJPanel" />
-        <property name="levelOfPlay" ref="levelOfPlay" />
-        <property name="resultOfGuessing" ref="resultOfGuessing" />
+        
         
     </bean>
     
     
     
-    <bean id="buttonsJPanel" class="com.mycompany.guessthesequence.visual.ButtonsJPanel">
+    <bean id="buttonsJPanel" class="com.mycompany.guessthesequence.visual.ButtonsJPanelImpl">
         
-        <property name="difficultyOfGame" ref="difficultyOfGame" />
         <property name="answersJPanel" ref="answersJPanel" />
         
     </bean>
@@ -73,16 +74,17 @@
         <constructor-arg value="Проверить" index="0" />
     </bean>
     
-    <bean id="answersJPanel" class="com.mycompany.guessthesequence.visual.AnswersJPanel" >
+    <bean id="answersJPanel" class="com.mycompany.guessthesequence.visual.AnswersJPanelImpl" >
         
         <property name="buttonsJPanel" ref="buttonsJPanel" />
         <property name="resultsJPanel" ref="resultsJPanel" />
         <property name="verifyJButton" ref="verifyJButton" />
     </bean>
     
-    <bean id="resultsJPanel" class="com.mycompany.guessthesequence.visual.ResultsJPanel" >
+    <bean id="resultsJPanel" class="com.mycompany.guessthesequence.visual.ResultsJPanelImpl" >
         <property name="answersJPanel" ref="answersJPanel" />
         <property name="levelOfPlay" ref="levelOfPlay" />
+        <property name="resultOfGuessing" ref="resultOfGuessing" />
         <property name="gameJFrame" ref="gameJFrame" />
         <property name="record" ref="record" />
         <property name="jobWithBase" ref="jobWithBase" />
