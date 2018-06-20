@@ -29,6 +29,7 @@ public class AnswersJPanelImpl extends JPanel implements AnswersJPanel, ActionLi
     private ResultsJPanel resultsJPanel;
     private LevelOfPlay levelOfPlay;
     private JButton verifyJButton;
+    private Integer[] answersCollection;
     
 
     public AnswersJPanelImpl() {
@@ -38,6 +39,35 @@ public class AnswersJPanelImpl extends JPanel implements AnswersJPanel, ActionLi
     }
 
     @Override
+    public Object[] getAnswersCollection() {
+        return answersCollection;
+    }
+
+    @Override
+    public void setAnswersCollection(String answerElement) {
+                
+        for(int i=0;i<levelOfPlay.getDefineSize();i++){
+            if(getButton()[i].getActionCommand().equals("default")){ 
+                image = new ImageIcon(new ImageIcon(getClass().getClassLoader().getResource(AllElements.values()[Integer.valueOf(answerElement)].getUrlAddress())).getImage().getScaledInstance(80, 60, Image.SCALE_SMOOTH));
+                if(image!=null){
+                    getButton()[i].setIcon(image);
+                } else {getButton()[i].setText(answerElement);}
+                getButton()[i].setActionCommand(String.valueOf(Integer.valueOf(answerElement)));
+                answersCollection[i]=Integer.valueOf(answerElement);
+                break;
+            }
+        }
+        for(JButton x:button){
+            if(!x.getActionCommand().equals("default")){
+                verifyJButton.setEnabled(true);
+            } else verifyJButton.setEnabled(false);
+        }
+        
+        
+    }
+
+    
+    @Override
     public JPanel getAnswersJPanel() {
         return this;
     }
@@ -46,7 +76,7 @@ public class AnswersJPanelImpl extends JPanel implements AnswersJPanel, ActionLi
     public void setAnswersJPanel(LevelOfPlay levelOfPlay) {
         this.levelOfPlay = levelOfPlay;
         
-        
+        answersCollection = new Integer[levelOfPlay.getDefineSize()];
         button = new JButton[levelOfPlay.getDefineSize()];
         image = new ImageIcon(new ImageIcon(getClass().getClassLoader().getResource("images/question.jpeg")).getImage().getScaledInstance(80, 60, Image.SCALE_SMOOTH));
         
@@ -83,37 +113,10 @@ public class AnswersJPanelImpl extends JPanel implements AnswersJPanel, ActionLi
         add(button[i]);
         button[i].addActionListener(this);
         }
-    }
-    
-    
-    
-    public ButtonsJPanel getButtonsJPanel() {
-        return buttonsJPanel;
-    }
-
-    public void setButtonsJPanel(ButtonsJPanel buttonsJPanel) {
-        this.buttonsJPanel = buttonsJPanel;
         
-    }
-/*
-    public LevelOfPlay getLevelOfPlay() {
-        return levelOfPlay;
-    }
-
-    public void setLevelOfPlay(LevelOfPlay levelOfPlay) {
-        this.levelOfPlay = levelOfPlay;
-    }
-*/
-        
-    @Override
-    public JButton getVerifyJButton() {
-        return verifyJButton;
-    }
-
-    public void setVerifyJButton(JButton verifyJButton) {
-        this.verifyJButton = verifyJButton;
         //Кнопка проверки ответов
-                
+         
+        verifyJButton = new JButton("Проверить"); 
         //Расположение на панели                
             //Значимость
         gbc.weightx = 0.0;
@@ -129,7 +132,7 @@ public class AnswersJPanelImpl extends JPanel implements AnswersJPanel, ActionLi
         gbc.gridx = 0;
         gbc.gridy = 1;
         //Количество занимаемых ячеек
-        if(levelOfPlay!=null){
+        if(levelOfPlay.getDefineSize()!=0){
             gbc.gridwidth = levelOfPlay.getDefineSize();
         } else gbc.gridwidth = 1;
         gbc.gridheight = 1;
@@ -139,12 +142,23 @@ public class AnswersJPanelImpl extends JPanel implements AnswersJPanel, ActionLi
         gbl.setConstraints(verifyJButton, gbc);
         
         verifyJButton.setEnabled(false);
-        //verifyJButton.addActionListener(resultsJPanel.getResultsJPanel());
+        verifyJButton.addActionListener((ae)->{resultsJPanel.setResultsJPanel(answersCollection);});
         
         add(verifyJButton);
-        
+    }
+    
+    
+    
+    public ButtonsJPanel getButtonsJPanel() {
+        return buttonsJPanel;
     }
 
+    public void setButtonsJPanel(ButtonsJPanel buttonsJPanel) {
+        this.buttonsJPanel = buttonsJPanel;
+        
+    }
+        
+    
     public ResultsJPanel getResultsJPanel() {
         return resultsJPanel;
     }
@@ -162,9 +176,6 @@ public class AnswersJPanelImpl extends JPanel implements AnswersJPanel, ActionLi
         this.button = button;
     }
     
-    
-    
-
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton actionButton = (JButton)e.getSource();
@@ -179,7 +190,7 @@ public class AnswersJPanelImpl extends JPanel implements AnswersJPanel, ActionLi
             buttonsJPanel.getButton()[Integer.valueOf(e.getActionCommand())].setEnabled(true);
         }
         actionButton.setActionCommand("default");
-        getVerifyJButton().setEnabled(false);
+        verifyJButton.setEnabled(false);
                        
     }
    

@@ -45,7 +45,7 @@ public class ResultOfGuessingImpl implements ResultOfGuessing {
                     ++guessedElements;
                 }
             }
-        } 
+        }  
     }
 
     @Override

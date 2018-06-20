@@ -13,6 +13,7 @@ import javax.swing.JPanel;
  */
 public interface ResultsJPanel{
     JPanel getResultsJPanel();
+    void setResultsJPanel(Object[]answersCollection);
     
     
     

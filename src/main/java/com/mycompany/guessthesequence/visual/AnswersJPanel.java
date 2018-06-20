@@ -17,6 +17,7 @@ public interface AnswersJPanel{
     JPanel getAnswersJPanel();
     JButton[] getButton();
     void setAnswersJPanel(LevelOfPlay levelOfPlay);
-    JButton getVerifyJButton();
+    Object[] getAnswersCollection();
+    void setAnswersCollection(String answerElement);
     
 }

@@ -26,6 +26,7 @@ public class RandomCollection implements CollectionElements{
         return randomCollectionElements;
     }
 
+    @Override
     public void setCollectionElements(LevelOfPlay levelOfPlay) {
         //this.collectionElements = collectionElements;
         randomCollectionElements = new Object[levelOfPlay.getDefineSize()];

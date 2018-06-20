@@ -16,11 +16,8 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Insets;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -30,7 +27,7 @@ import javax.swing.JScrollPane;
  *
  * @author grperets
  */
-public class ResultsJPanelImpl extends JPanel implements ResultsJPanel, ActionListener {
+public class ResultsJPanelImpl extends JPanel implements ResultsJPanel {
     private GridBagLayout gbl;
     private GridBagConstraints gbc;
     private JPanel scrollResultsJPanel;
@@ -82,14 +79,25 @@ public class ResultsJPanelImpl extends JPanel implements ResultsJPanel, ActionLi
                 
     }
 
+    public CollectionElements getCollectionElements() {
+        return collectionElements;
+    }
+
+    public void setCollectionElements(CollectionElements collectionElements) {
+        this.collectionElements = collectionElements;
+    }
+
+    
     @Override
     public JPanel getResultsJPanel() {
         return this;
     }
 
-    public void setResultsJPanel(ResultsJPanel resultsJPanel) {
+    @Override
+    public void setResultsJPanel(Object[]answersCollection) {
         //this.re = (ResultsJPanelImpl) resultsJPanel;
         
+               
         //Расположение в scrollResultsJPanel
         //Значимость
         gbc.weightx = 0.0;
@@ -118,12 +126,59 @@ public class ResultsJPanelImpl extends JPanel implements ResultsJPanel, ActionLi
         //scrollResultsJPanel.setLayout(new GridLayout(0,1));
         
         //scrollResultsJPanel.add(jLabel);
-        for(Integer x:yourCollection){
+        for(Object x:answersCollection){
             //scrollResultsJPanel.setLayout(new FlowLayout());
             resultsJLabel= new JLabel(); 
-            resultsJLabel.setIcon(new ImageIcon(new ImageIcon(getClass().getClassLoader().getResource(AllElements.values()[x].getUrlAddress())).getImage().getScaledInstance(80, 60, Image.SCALE_SMOOTH)));
+            resultsJLabel.setIcon(new ImageIcon(new ImageIcon(getClass().getClassLoader().getResource(AllElements.values()[(Integer)x].getUrlAddress())).getImage().getScaledInstance(80, 60, Image.SCALE_SMOOTH)));
             gbl.setConstraints(resultsJLabel, gbc);
             scrollResultsJPanel.add(resultsJLabel);
+        }
+        //Передача варианта ответа для сравнения
+        resultOfGuessing.setGuessedElements(answersCollection, collectionElements.getCollectionElements());
+        resultOfGuessing.setPositionElements(answersCollection, collectionElements.getCollectionElements());
+        
+        resultsJLabel= new JLabel();
+        resultsJLabel.setText("<html><h1>"+String.valueOf(resultOfGuessing.getGuessedElements())+"</h1></html>");
+        gbl.setConstraints(resultsJLabel, gbc);
+        scrollResultsJPanel.add(resultsJLabel);
+        
+        resultsJLabel= new JLabel();
+        resultsJLabel.setText(String.valueOf("<html><h1>"+resultOfGuessing.getPositionElements())+"</h1></html>");
+        gbl.setConstraints(resultsJLabel, gbc);
+        scrollResultsJPanel.add(resultsJLabel);
+        
+        validate();
+        
+        //Окно поздравления
+        if (resultOfGuessing.getPositionElements() == levelOfPlay.getDefineSize()){
+            timeGame = (System.currentTimeMillis() - gameJFrame.getTimeStart())/1000;
+            int response = JOptionPane.showConfirmDialog(null,"Поздравляем!\nВаш результат: "+timeGame+" c. Хотите сохранить?", "Победа!", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
+            switch (response){
+                case (JOptionPane.YES_OPTION):{
+                    String nameGamer = (String)JOptionPane.showInputDialog(null,"Ваше имя:", "Сохранение результатов", JOptionPane.PLAIN_MESSAGE, null, null, "Ваше имя");
+                    record.setNameGamer(nameGamer);
+                    record.setDefineSize(levelOfPlay.getDefineSize());
+                    record.setCollectionSize(levelOfPlay.getCollectionSize());
+                    record.setTimeGame(timeGame);
+                    jobWithBase.insert(record);
+                    
+                    //SaveResultsGame saveResultsGame = new SaveResultsGame(gamePanel, timeGame);
+                    break;
+                }
+                default: {
+                    //Новое окно игры
+                    //gameJFrame.dispose();
+                    gameJFrame.remove(gameJFrame.getActionJPanel());
+                    //gameJFrame.remove(gameJFrame.getActionJPanel());
+                    gameJFrame.setVisible(false);
+                    
+                    gameJFrame.setActionJPanel(gameJFrame.getStartJPanel().getStartJPanel());
+                    gameJFrame.setVisible(true);
+                    //EventQueue.invokeLater(new Runnable(){public void run(){GameFrame gameFrame = new GameFrame();}});
+                }
+                
+            }
+
         }
         
         
@@ -188,73 +243,6 @@ public class ResultsJPanelImpl extends JPanel implements ResultsJPanel, ActionLi
     public void setJobWithBase(JobWithBase jobWithBase) {
         this.jobWithBase = jobWithBase;
     }
-        
-    
-    
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        
-        yourCollection = new ArrayList();
-        for(JButton x:answersJPanel.getButton()){
-            yourCollection.add(Integer.valueOf( x.getActionCommand()));
-            //System.out.println(answersCollection);
-        }
-        
-        
-
-        //Передача варианта ответа для сравнения
-        
-                
-        resultOfGuessing.setGuessedElements(answersJPanel.getButton(), collectionElements.getCollectionElements());
-        resultOfGuessing.setPositionElements(answersJPanel.getButton(), collectionElements.getCollectionElements());
-        
-        resultsJLabel= new JLabel();
-        resultsJLabel.setText("<html><h1>"+String.valueOf(resultOfGuessing.getGuessedElements())+"</h1></html>");
-        gbl.setConstraints(resultsJLabel, gbc);
-        scrollResultsJPanel.add(resultsJLabel);
-        
-        resultsJLabel= new JLabel();
-        resultsJLabel.setText(String.valueOf("<html><h1>"+resultOfGuessing.getPositionElements())+"</h1></html>");
-        gbl.setConstraints(resultsJLabel, gbc);
-        scrollResultsJPanel.add(resultsJLabel);
-        validate();
-        
-        
-        //Окно поздравления
-        if (resultOfGuessing.getPositionElements() == levelOfPlay.getDefineSize()){
-            timeGame = (System.currentTimeMillis() - gameJFrame.getTimeStart())/1000;
-            int response = JOptionPane.showConfirmDialog(null,"Поздравляем!\nВаш результат: "+timeGame+" c. Хотите сохранить?", "Победа!", JOptionPane.YES_NO_OPTION, JOptionPane.PLAIN_MESSAGE);
-            switch (response){
-                case (JOptionPane.YES_OPTION):{
-                    String nameGamer = (String)JOptionPane.showInputDialog(null,"Ваше имя:", "Сохранение результатов", JOptionPane.PLAIN_MESSAGE, null, null, "Ваше имя");
-                    record.setNameGamer(nameGamer);
-                    record.setDefineSize(levelOfPlay.getDefineSize());
-                    record.setCollectionSize(levelOfPlay.getCollectionSize());
-                    record.setTimeGame(timeGame);
-                    jobWithBase.insert(record);
-                    
-                    //SaveResultsGame saveResultsGame = new SaveResultsGame(gamePanel, timeGame);
-                    break;
-                }
-                default: {
-                    //Новое окно игры
-                    //gameJFrame.dispose();
-                    gameJFrame.remove(gameJFrame.getActionJPanel());
-                    //gameJFrame.remove(gameJFrame.getActionJPanel());
-                    gameJFrame.setVisible(false);
-                    
-                    gameJFrame.setActionJPanel(gameJFrame.getStartJPanel().getStartJPanel());
-                    gameJFrame.setVisible(true);
-                    //EventQueue.invokeLater(new Runnable(){public void run(){GameFrame gameFrame = new GameFrame();}});
-                }
-                
-            }
-
-        }
-        
-        
-    }
-    
-    
+      
     
 }

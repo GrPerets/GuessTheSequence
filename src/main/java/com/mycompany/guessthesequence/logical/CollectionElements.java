@@ -11,5 +11,6 @@ package com.mycompany.guessthesequence.logical;
  */
 public interface CollectionElements {
     Object[] getCollectionElements();
+    void setCollectionElements(LevelOfPlay levelOfPlay);
     
 }

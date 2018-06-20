@@ -5,7 +5,6 @@
  */
 package com.mycompany.guessthesequence.visual;
 
-import com.mycompany.guessthesequence.logical.LevelOfPlay;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -24,6 +23,7 @@ public class PlayJPanelImpl extends JPanel implements PlayJPanel{
     private AnswersJPanel answersJPanel;
     private ResultsJPanel resultsJPanel;
     private JScrollPane jScrollPane;
+    
     
     
     
@@ -137,13 +137,5 @@ public class PlayJPanelImpl extends JPanel implements PlayJPanel{
     public JPanel getPlayJPanel() {
         return this;
     }
-    
-
-    
-
-    
-    
-    
-    
     
 }

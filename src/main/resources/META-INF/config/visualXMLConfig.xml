@@ -11,10 +11,10 @@
         
     <bean id="gameJFrame" class="com.mycompany.guessthesequence.visual.GameJFrame" >
         <constructor-arg ref="gameJMenu" index="0" />
-        <!--<property name="actionJPanel" ref="startJPanel" />    -->
         <property name="startJPanel" ref="startJPanel" />
         <property name="playJPanel" ref="playJPanel" />
         <property name="levelOfPlay" ref="levelOfPlay" />
+        <property name="collectionElements" ref="collectionElements" />
                 
     </bean>
      
@@ -70,15 +70,11 @@
         
     </bean>
     
-    <bean id="verifyJButton" class="javax.swing.JButton" >
-        <constructor-arg value="Проверить" index="0" />
-    </bean>
-    
     <bean id="answersJPanel" class="com.mycompany.guessthesequence.visual.AnswersJPanelImpl" >
         
         <property name="buttonsJPanel" ref="buttonsJPanel" />
         <property name="resultsJPanel" ref="resultsJPanel" />
-        <property name="verifyJButton" ref="verifyJButton" />
+        
     </bean>
     
     <bean id="resultsJPanel" class="com.mycompany.guessthesequence.visual.ResultsJPanelImpl" >
@@ -88,7 +84,7 @@
         <property name="gameJFrame" ref="gameJFrame" />
         <property name="record" ref="record" />
         <property name="jobWithBase" ref="jobWithBase" />
-        
+        <property name="collectionElements" ref="collectionElements" />
     </bean>
 
 </beans>

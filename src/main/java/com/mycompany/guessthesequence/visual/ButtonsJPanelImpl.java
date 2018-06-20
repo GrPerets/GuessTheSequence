@@ -12,7 +12,6 @@ import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -28,7 +27,7 @@ public class ButtonsJPanelImpl extends JPanel implements ButtonsJPanel, ActionLi
     private JButton[] button;
     private AnswersJPanel answersJPanel;
     private LevelOfPlay levelOfPlay;
-    private ArrayList answersCollection;
+    
     
 
    
@@ -113,28 +112,17 @@ public class ButtonsJPanelImpl extends JPanel implements ButtonsJPanel, ActionLi
     public void actionPerformed(ActionEvent e) {
         
         JButton actionButton = (JButton)e.getSource();
-        
-               
-        for(int i=0;i<levelOfPlay.getDefineSize();i++){
-            if(answersJPanel.getButton()[i].getActionCommand().equals("default")){ 
-                image = new ImageIcon(new ImageIcon(getClass().getClassLoader().getResource(AllElements.values()[Integer.valueOf(e.getActionCommand())].getUrlAddress())).getImage().getScaledInstance(80, 60, Image.SCALE_SMOOTH));
-                if(image!=null){
-                    answersJPanel.getButton()[i].setIcon(image);
-                } else {answersJPanel.getButton()[i].setText(e.getActionCommand());}
-                answersJPanel.getButton()[i].setActionCommand(String.valueOf(Integer.valueOf(e.getActionCommand())));
-                actionButton.setEnabled(false);
-                break;
-            }
+        int answerButtons = 0;
+        for(JButton x:button){
+            if(!x.isEnabled()) ++answerButtons;
+        }
+        if(answerButtons!=levelOfPlay.getDefineSize()){
+            answersJPanel.setAnswersCollection(e.getActionCommand());
+            actionButton.setEnabled(false);
+            
         }
         
-        answersCollection = new ArrayList();
-        for(JButton x:answersJPanel.getButton()){
-            answersCollection.add(x.getActionCommand());
-        }
         
-        if(!answersCollection.contains("default")){
-            answersJPanel.getVerifyJButton().setEnabled(true);
-        } else answersJPanel.getVerifyJButton().setEnabled(false);
                  
     }  
     

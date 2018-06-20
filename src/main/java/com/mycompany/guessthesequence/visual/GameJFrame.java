@@ -5,6 +5,7 @@
  */
 package com.mycompany.guessthesequence.visual;
 
+import com.mycompany.guessthesequence.logical.CollectionElements;
 import com.mycompany.guessthesequence.logical.LevelOfPlay;
 import java.awt.Dimension;
 import java.awt.Insets;
@@ -26,8 +27,7 @@ public class GameJFrame extends JFrame implements ActionListener, InitializingBe
     private PlayJPanel playJPanel;
     private JPanel actionJPanel;
     private LevelOfPlay levelOfPlay;
-    
-    
+    private CollectionElements collectionElements;
     private long timeStart;
     
 
@@ -48,6 +48,16 @@ public class GameJFrame extends JFrame implements ActionListener, InitializingBe
         
     }
 
+    public CollectionElements getCollectionElements() {
+        return collectionElements;
+    }
+
+    public void setCollectionElements(CollectionElements collectionElements) {
+        this.collectionElements = collectionElements;
+    }
+
+     
+    
     public LevelOfPlay getLevelOfPlay() {
         return levelOfPlay;
     }
@@ -83,9 +93,6 @@ public class GameJFrame extends JFrame implements ActionListener, InitializingBe
         this.playJPanel = playJPanel;
     }
     
-    
-   
-
     public long getTimeStart() {
         return timeStart;
     }
@@ -104,13 +111,10 @@ public class GameJFrame extends JFrame implements ActionListener, InitializingBe
        
         playJPanel.getButtonsJPanel().setButtonsJPanel(levelOfPlay);
         playJPanel.getAnswersJPanel().setAnswersJPanel(levelOfPlay);
-        //playJPanel.getAnswersJPanel().getVerifyJButton();
-        //playJPanel.getRandomCollection().setRandomCollection(startJPanel.getCollectionSizeJSlider().getLevelOfPlay());
-        
-        
-        
+        collectionElements.setCollectionElements(levelOfPlay);
+                
         setActionJPanel(playJPanel.getPlayJPanel());
-        getActionJPanel();
+        //getActionJPanel();
         //Начало отсчета времени
         setTimeStart(System.currentTimeMillis());
         
