@@ -6,11 +6,13 @@
 package com.mycompany.guessthesequence.logical;
 
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author grperets
  */
+@Component("levelOfPlay")
 public class LevelOfPlayImpl implements  LevelOfPlay, InitializingBean{
     private int defineSize;
     private int collectionSize;

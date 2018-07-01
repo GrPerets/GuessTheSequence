@@ -5,129 +5,19 @@
  */
 package com.mycompany.guessthesequence.visual;
 
-import com.mycompany.guessthesequence.logical.CollectionElements;
-import com.mycompany.guessthesequence.logical.LevelOfPlay;
-import java.awt.Dimension;
-import java.awt.Insets;
-import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import org.springframework.beans.factory.InitializingBean;
 
 /**
  *
  * @author grperets
  */
-public class GameJFrame extends JFrame implements ActionListener, InitializingBean{
-    
-    private Dimension dimension;
-    private StartJPanel startJPanel;
-    private PlayJPanel playJPanel;
-    private JPanel actionJPanel;
-    private LevelOfPlay levelOfPlay;
-    private CollectionElements collectionElements;
-    private long timeStart;
-    
-
-    public GameJFrame(GameJMenu gameJMenu) {
-                
-// Размер окна = размер экрана - панель задач
-        dimension = Toolkit.getDefaultToolkit().getScreenSize();
-        Insets insets = Toolkit.getDefaultToolkit().getScreenInsets(getGraphicsConfiguration());
-        setSize((int)dimension.getWidth()-insets.left-insets.right, (int)dimension.getHeight()-insets.top-insets.bottom);
-        setLocation(insets.right, insets.top);
-        setTitle("Guess The Sequence");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-         
-        
-        
-        //Главное меню
-        setJMenuBar(gameJMenu);
-        
-    }
-
-    public CollectionElements getCollectionElements() {
-        return collectionElements;
-    }
-
-    public void setCollectionElements(CollectionElements collectionElements) {
-        this.collectionElements = collectionElements;
-    }
-
-     
-    
-    public LevelOfPlay getLevelOfPlay() {
-        return levelOfPlay;
-    }
-
-    public void setLevelOfPlay(LevelOfPlay levelOfPlay) {
-        this.levelOfPlay = levelOfPlay;
-    }
-    
-    
-    public JPanel getActionJPanel() {
-        return actionJPanel;
-    }
-
-    public void setActionJPanel(JPanel actionJPanel) {
-        this.actionJPanel = actionJPanel;
-        add(actionJPanel);
-        setVisible(true);
-    }
-
-    public StartJPanel getStartJPanel() {
-        return startJPanel;
-    }
-
-    public void setStartJPanel(StartJPanel startJPanel) {
-        this.startJPanel = startJPanel;
-    }
-
-    public PlayJPanel getPlayJPanel() {
-        return playJPanel;
-    }
-
-    public void setPlayJPanel(PlayJPanel playJPanel) {
-        this.playJPanel = playJPanel;
-    }
-    
-    public long getTimeStart() {
-        return timeStart;
-    }
-
-    public void setTimeStart(long timeStart) {
-        this.timeStart = timeStart;
-    }
-    
-    
-    
-    
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        remove(this.actionJPanel);
-        
-       
-        playJPanel.getButtonsJPanel().setButtonsJPanel(levelOfPlay);
-        playJPanel.getAnswersJPanel().setAnswersJPanel(levelOfPlay);
-        collectionElements.setCollectionElements(levelOfPlay);
-                
-        setActionJPanel(playJPanel.getPlayJPanel());
-        //getActionJPanel();
-        //Начало отсчета времени
-        setTimeStart(System.currentTimeMillis());
-        
-        
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        setActionJPanel(startJPanel.getStartJPanel());
-        
-        //if(getActionJPanel()!=null)getActionJPanel();
-        
-    }
- 
+public interface GameJFrame extends ActionListener{
+    JFrame getGameJFrame();
+    long getTimeStart();
+    JPanel getActionJPanel();
+    void setActionJPanel(JPanel actionJPanel);
+    StartJPanel getStartJPanel();
     
 }

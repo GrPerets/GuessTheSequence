@@ -6,11 +6,13 @@
 package com.mycompany.guessthesequence.logical;
 
 import java.util.Collection;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author grperets
  */
+@Component("resultOfGuessing")
 public class ResultOfGuessingImpl implements ResultOfGuessing {
     private int guessedElements; //Угадано елементов
     private int positionElements; //Елементы на своих местах

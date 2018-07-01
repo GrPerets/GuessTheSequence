@@ -168,12 +168,12 @@ public class ResultsJPanelImpl extends JPanel implements ResultsJPanel {
                 default: {
                     //Новое окно игры
                     //gameJFrame.dispose();
-                    gameJFrame.remove(gameJFrame.getActionJPanel());
+                    gameJFrame.getGameJFrame().remove(gameJFrame.getActionJPanel());
                     //gameJFrame.remove(gameJFrame.getActionJPanel());
-                    gameJFrame.setVisible(false);
+                    gameJFrame.getGameJFrame().setVisible(false);
                     
                     gameJFrame.setActionJPanel(gameJFrame.getStartJPanel().getStartJPanel());
-                    gameJFrame.setVisible(true);
+                    gameJFrame.getGameJFrame().setVisible(true);
                     //EventQueue.invokeLater(new Runnable(){public void run(){GameFrame gameFrame = new GameFrame();}});
                 }
                 

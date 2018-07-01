@@ -8,11 +8,13 @@ package com.mycompany.guessthesequence.logical;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Random;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author grperets
  */
+@Component("collectionElements")
 public class RandomCollection implements CollectionElements{
     
     private Object[] randomCollectionElements;
@@ -25,7 +27,7 @@ public class RandomCollection implements CollectionElements{
     public Object[] getCollectionElements() {
         return randomCollectionElements;
     }
-
+    
     @Override
     public void setCollectionElements(LevelOfPlay levelOfPlay) {
         //this.collectionElements = collectionElements;
