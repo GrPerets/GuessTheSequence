@@ -12,14 +12,16 @@
             http://www.springframework.org/schema/aop/spring-aop.xsd"
         default-lazy-init="true">
     
-    <context:component-scan base-package="com.mycompany.guessthesequence.visual">
-    </context:component-scan>
-    <aop:aspectj-autoproxy />
-    
     <import resource="classpath:META-INF/config/logicalXMLConfig-annotation.xml" />
     <import resource="classpath:META-INF/config/recordsXMLConfig.xml" />
+    <!--
+    <context:component-scan base-package="com.mycompany.guessthesequence.visual">
+    </context:component-scan>
     
-        
+    <aop:aspectj-autoproxy />-->
+    
+    <bean id="newGame" class="com.mycompany.guessthesequence.visual.NewGameImpl" />
+            
     <bean id="gameJFrame" class="com.mycompany.guessthesequence.visual.GameJFrameImpl" >
         <constructor-arg ref="gameJMenu" index="0" />
         <property name="startJPanel" ref="startJPanel" />
@@ -30,6 +32,7 @@
     </bean>
      
      <bean id="gameJMenu" class="com.mycompany.guessthesequence.visual.GameJMenu" >
+         
      </bean>
      
     
@@ -54,7 +57,10 @@
     
     
     
-    <bean id="startJButton" class="javax.swing.JButton" />
+    <bean id="startJButton" class="javax.swing.JButton">
+        <constructor-arg value="СТАРТ" />
+    </bean>
+    
     <bean id="startJPanel" class="com.mycompany.guessthesequence.visual.StartJPanelImpl">
         
         <property name="gameJFrame" ref="gameJFrame" />
@@ -94,7 +100,7 @@
         <property name="resultOfGuessing" ref="resultOfGuessing" />
         <property name="gameJFrame" ref="gameJFrame" />
         <property name="record" ref="record" />
-        <property name="jobWithBase" ref="jobWithBase" />
+        <property name="recordDao" ref="recordDao" />
         <property name="collectionElements" ref="collectionElements" />
     </bean>
 

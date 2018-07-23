@@ -19,9 +19,10 @@
     </bean>
     <context:property-placeholder location="classpath:META-INF/config/jdbc.properties" />
 
-    <bean id="jobWithBase" class="com.mycompany.guessthesequence.records.JobWithBase" >
+    <bean id="recordDao" class="com.mycompany.guessthesequence.records.RecordDaoImpl" >
         <property name="dataSource" ref="dataSource" />
     </bean>
+    
     <bean id="record" class="com.mycompany.guessthesequence.records.Record" >
         
     </bean>

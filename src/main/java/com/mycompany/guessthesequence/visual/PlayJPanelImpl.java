@@ -10,17 +10,23 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author grperets
  */
+@Component("playJPanel")
 public class PlayJPanelImpl extends JPanel implements PlayJPanel{
     
     private final GridBagLayout gbl;
     private final GridBagConstraints gbc;
+    @Autowired
     private ButtonsJPanel buttonsJPanel;
+    @Autowired
     private AnswersJPanel answersJPanel;
+    @Autowired
     private ResultsJPanel resultsJPanel;
     private JScrollPane jScrollPane;
     

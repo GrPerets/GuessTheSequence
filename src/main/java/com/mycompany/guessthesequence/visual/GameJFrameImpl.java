@@ -54,6 +54,10 @@ public class GameJFrameImpl extends JFrame implements GameJFrame, InitializingBe
         setJMenuBar(gameJMenu);
         
     }
+    
+    public void test(){
+        
+    }
 
     public CollectionElements getCollectionElements() {
         return collectionElements;
@@ -119,9 +123,9 @@ public class GameJFrameImpl extends JFrame implements GameJFrame, InitializingBe
     public void actionPerformed(ActionEvent e) {
         remove(this.actionJPanel);
                
-        //playJPanel.getButtonsJPanel().setButtonsJPanel(levelOfPlay);
-        //playJPanel.getAnswersJPanel().setAnswersJPanel(levelOfPlay);
-        //collectionElements.setCollectionElements(levelOfPlay);
+        playJPanel.getButtonsJPanel().setButtonsJPanel(levelOfPlay);
+        playJPanel.getAnswersJPanel().setAnswersJPanel(levelOfPlay);
+        collectionElements.setCollectionElements(levelOfPlay);
                 
         setActionJPanel(playJPanel.getPlayJPanel());
         //getActionJPanel();

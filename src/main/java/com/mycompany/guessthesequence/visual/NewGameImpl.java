@@ -5,40 +5,40 @@
  */
 package com.mycompany.guessthesequence.visual;
 
-import com.mycompany.guessthesequence.logical.CollectionElements;
-import com.mycompany.guessthesequence.logical.LevelOfPlay;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
  *
  * @author grperets
  */
-@Component("newGame")
+//@Component("newGame")
 @Aspect
-public class NewGameImpl implements NewGame{
+public class NewGameImpl{
+    /*
     @Autowired
     private PlayJPanel playJPanel;
     @Autowired
     private LevelOfPlay levelOfPlay;
     @Autowired
     private CollectionElements collectionElements;
-
-    public NewGameImpl() {
-    }
+*/
+    
     
     @Pointcut("execution(* com.mycompany.guessthesequence.visual.GameJFrame.actionPerformed(..))")
     public void startNewGame(){
     }
     
     @Before("startNewGame()")
-    public void setParameterNewGame(){
+    public void parameterNewGame(){
+        System.out.println("bn--------------------------nm");
+        /*
         playJPanel.getButtonsJPanel().setButtonsJPanel(levelOfPlay);
         playJPanel.getAnswersJPanel().setAnswersJPanel(levelOfPlay);
         collectionElements.setCollectionElements(levelOfPlay);
+        */
     }
     
     

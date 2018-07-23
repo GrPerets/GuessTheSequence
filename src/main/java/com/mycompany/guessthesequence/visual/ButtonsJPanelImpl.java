@@ -15,16 +15,20 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author grperets
  */
+@Component("buttobsJPanel")
 public class ButtonsJPanelImpl extends JPanel implements ButtonsJPanel, ActionListener {
     private GridBagLayout gbl;
     private GridBagConstraints gbc;
     private ImageIcon image;
     private JButton[] button;
+    @Autowired
     private AnswersJPanel answersJPanel;
     private LevelOfPlay levelOfPlay;
     

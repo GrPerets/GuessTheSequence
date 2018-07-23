@@ -59,4 +59,9 @@ public class Record {
         this.timeGame = timeGame;
     }
     
+    @Override
+    public String toString(){
+        return null;        
+    }
+    
 }

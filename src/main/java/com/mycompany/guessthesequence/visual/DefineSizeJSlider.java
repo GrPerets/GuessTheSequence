@@ -8,12 +8,16 @@ package com.mycompany.guessthesequence.visual;
 import com.mycompany.guessthesequence.logical.LevelOfPlay;
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author grperets
  */
+@Component
 public class DefineSizeJSlider extends JSlider{
+    @Autowired
     private LevelOfPlay levelOfPlay;
 
     

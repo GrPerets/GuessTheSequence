@@ -8,8 +8,8 @@ package com.mycompany.guessthesequence.visual;
 import com.mycompany.guessthesequence.logical.CollectionElements;
 import com.mycompany.guessthesequence.logical.LevelOfPlay;
 import com.mycompany.guessthesequence.logical.ResultOfGuessing;
-import com.mycompany.guessthesequence.records.JobWithBase;
 import com.mycompany.guessthesequence.records.Record;
+import com.mycompany.guessthesequence.records.RecordDao;
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -22,11 +22,13 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author grperets
  */
+@Component("resultsJPanel")
 public class ResultsJPanelImpl extends JPanel implements ResultsJPanel {
     private GridBagLayout gbl;
     private GridBagConstraints gbc;
@@ -44,9 +46,8 @@ public class ResultsJPanelImpl extends JPanel implements ResultsJPanel {
     
     
     private Record record;
-    private JobWithBase jobWithBase;
-    
-    
+    private RecordDao recordDao;
+        
     public ResultsJPanelImpl() {
         BorderLayout borderLayout = new BorderLayout();
         setLayout(borderLayout);
@@ -160,7 +161,7 @@ public class ResultsJPanelImpl extends JPanel implements ResultsJPanel {
                     record.setDefineSize(levelOfPlay.getDefineSize());
                     record.setCollectionSize(levelOfPlay.getCollectionSize());
                     record.setTimeGame(timeGame);
-                    jobWithBase.insert(record);
+                    recordDao.insert(record);
                     
                     //SaveResultsGame saveResultsGame = new SaveResultsGame(gamePanel, timeGame);
                     break;
@@ -236,13 +237,14 @@ public class ResultsJPanelImpl extends JPanel implements ResultsJPanel {
         this.record = record;
     }
 
-    public JobWithBase getJobWithBase() {
-        return jobWithBase;
+    public RecordDao getRecordDao() {
+        return recordDao;
     }
 
-    public void setJobWithBase(JobWithBase jobWithBase) {
-        this.jobWithBase = jobWithBase;
+    public void setRecordDao(RecordDao recordDao) {
+        this.recordDao = recordDao;
     }
-      
     
+    
+   
 }
