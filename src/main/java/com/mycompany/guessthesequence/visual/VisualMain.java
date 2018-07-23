@@ -20,7 +20,7 @@ public class VisualMain {
      */
     public static void main(String[] args) {
         
-        ApplicationContext ctx = new GenericXmlApplicationContext("classpath:META-INF/config/visualXMLConfig.xml");
+        ApplicationContext ctx = new GenericXmlApplicationContext("classpath:META-INF/config/visualXMLConfig-annotation.xml");
         //EventQueue.invokeLater(new Runnable(){public void run(){GameJFrame gameJFrameWithStartJPanel = ctx.getBean("gameJFrameWithStartJPanel", GameJFrame.class);}});
         EventQueue.invokeLater(() -> {
             GameJFrame gameJFrame = ctx.getBean("gameJFrame", GameJFrame.class);

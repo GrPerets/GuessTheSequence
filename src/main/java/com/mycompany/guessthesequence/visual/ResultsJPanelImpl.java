@@ -22,6 +22,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -71,9 +72,7 @@ public class ResultsJPanelImpl extends JPanel implements ResultsJPanel {
         gbl = new GridBagLayout();
         gbc = new GridBagConstraints();
         scrollResultsJPanel.setLayout(gbl); 
-       
-        scrollResultsJPanel.setLayout(gbl); 
-        
+              
         
         JScrollPane scrollResultsPane = new JScrollPane(scrollResultsJPanel);
         add(scrollResultsPane); 
@@ -83,7 +82,7 @@ public class ResultsJPanelImpl extends JPanel implements ResultsJPanel {
     public CollectionElements getCollectionElements() {
         return collectionElements;
     }
-
+    @Autowired
     public void setCollectionElements(CollectionElements collectionElements) {
         this.collectionElements = collectionElements;
     }
@@ -189,7 +188,7 @@ public class ResultsJPanelImpl extends JPanel implements ResultsJPanel {
     public AnswersJPanel getAnswersJPanel() {
         return answersJPanel;
     }
-
+    @Autowired
     public void setAnswersJPanel(AnswersJPanel answersJPanel) {
         this.answersJPanel = answersJPanel;
     }
@@ -197,7 +196,7 @@ public class ResultsJPanelImpl extends JPanel implements ResultsJPanel {
     public ArrayList<Integer> getYourCollection() {
         return yourCollection;
     }
-
+    
     public void setYourCollection(ArrayList<Integer> yourCollection) {
         this.yourCollection = yourCollection;
     }
@@ -206,7 +205,7 @@ public class ResultsJPanelImpl extends JPanel implements ResultsJPanel {
     public LevelOfPlay getLevelOfPlay() {
         return levelOfPlay;
     }
-
+    @Autowired
     public void setLevelOfPlay(LevelOfPlay levelOfPlay) {
         this.levelOfPlay = levelOfPlay;
     }
@@ -214,7 +213,7 @@ public class ResultsJPanelImpl extends JPanel implements ResultsJPanel {
     public ResultOfGuessing getResultOfGuessing() {
         return resultOfGuessing;
     }
-
+    @Autowired
     public void setResultOfGuessing(ResultOfGuessing resultOfGuessing) {
         this.resultOfGuessing = resultOfGuessing;
     }
@@ -224,7 +223,7 @@ public class ResultsJPanelImpl extends JPanel implements ResultsJPanel {
     public GameJFrame getGameJFrame() {
         return gameJFrame;
     }
-
+    @Autowired
     public void setGameJFrame(GameJFrame gameJFrame) {
         this.gameJFrame = gameJFrame;
     }
@@ -232,7 +231,7 @@ public class ResultsJPanelImpl extends JPanel implements ResultsJPanel {
     public Record getRecord() {
         return record;
     }
-
+    @Autowired
     public void setRecord(Record record) {
         this.record = record;
     }
@@ -240,7 +239,7 @@ public class ResultsJPanelImpl extends JPanel implements ResultsJPanel {
     public RecordDao getRecordDao() {
         return recordDao;
     }
-
+    @Autowired
     public void setRecordDao(RecordDao recordDao) {
         this.recordDao = recordDao;
     }

@@ -5,8 +5,32 @@
 
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-    <context:component-scan base-package="com.mycompany.guessthesequence.visual">
+    
+    <import resource="classpath:META-INF/config/logicalXMLConfig-annotation.xml" />
+    <import resource="classpath:META-INF/config/recordsXMLConfig-annotation.xml" />
+    
+    <context:component-scan base-package="com.mycompany.guessthesequence.visual"/>
         
-    </context:component-scan>
+    <bean id="collectionSizeJSlider" class="com.mycompany.guessthesequence.visual.CollectionSizeJSlider" >
+        <constructor-arg value="2" index="0" />
+        <constructor-arg value="10" index="1" />
+        <constructor-arg value="10" index="2" />
+        <property name="levelOfPlay" ref="levelOfPlay" />
+        <property name="defineSizeJSlider" ref="defineSizeJSlider" />
+    </bean>
+    
+     
+    
+    <bean id="defineSizeJSlider" class="com.mycompany.guessthesequence.visual.DefineSizeJSlider" >
+        <constructor-arg value="1" index="0" />
+        <constructor-arg value="10" index="1" />
+        <constructor-arg value="4" index="2" />
+        <property name="levelOfPlay" ref="levelOfPlay" />
+        
+    </bean>
+    
+    <bean id="startJButton" class="javax.swing.JButton">
+        <constructor-arg value="СТАРТ" />
+    </bean>
 
 </beans>

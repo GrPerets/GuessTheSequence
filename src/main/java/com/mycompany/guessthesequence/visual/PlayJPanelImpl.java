@@ -22,11 +22,8 @@ public class PlayJPanelImpl extends JPanel implements PlayJPanel{
     
     private final GridBagLayout gbl;
     private final GridBagConstraints gbc;
-    @Autowired
     private ButtonsJPanel buttonsJPanel;
-    @Autowired
     private AnswersJPanel answersJPanel;
-    @Autowired
     private ResultsJPanel resultsJPanel;
     private JScrollPane jScrollPane;
     
@@ -44,7 +41,7 @@ public class PlayJPanelImpl extends JPanel implements PlayJPanel{
     public ButtonsJPanel getButtonsJPanel() {
         return buttonsJPanel;
     }
-
+    @Autowired
     public void setButtonsJPanel(ButtonsJPanel buttonsJPanel) {
         this.buttonsJPanel = buttonsJPanel;
         jScrollPane = new JScrollPane(buttonsJPanel.getButtonsJPanel());
@@ -77,7 +74,7 @@ public class PlayJPanelImpl extends JPanel implements PlayJPanel{
     public AnswersJPanel getAnswersJPanel() {
         return answersJPanel;
     }
-
+    @Autowired
     public void setAnswersJPanel(AnswersJPanel answersJPanel) {
         this.answersJPanel = answersJPanel;
         jScrollPane = new JScrollPane(answersJPanel.getAnswersJPanel());
@@ -110,7 +107,7 @@ public class PlayJPanelImpl extends JPanel implements PlayJPanel{
     public ResultsJPanel getResultsJPanel() {
         return resultsJPanel;
     }
-
+    @Autowired
     public void setResultsJPanel(ResultsJPanel resultsJPanel) {
         this.resultsJPanel = resultsJPanel;
         

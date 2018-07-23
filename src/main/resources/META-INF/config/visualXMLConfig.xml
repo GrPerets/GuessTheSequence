@@ -9,14 +9,13 @@
             http://www.springframework.org/schema/context
             http://www.springframework.org/schema/context/spring-context.xsd
             http://www.springframework.org/schema/aop
-            http://www.springframework.org/schema/aop/spring-aop.xsd"
-        default-lazy-init="true">
+            http://www.springframework.org/schema/aop/spring-aop.xsd">
     
     <import resource="classpath:META-INF/config/logicalXMLConfig-annotation.xml" />
-    <import resource="classpath:META-INF/config/recordsXMLConfig.xml" />
+    <import resource="classpath:META-INF/config/recordsXMLConfig-annotation.xml" />
     <!--
-    <context:component-scan base-package="com.mycompany.guessthesequence.visual">
-    </context:component-scan>
+    <context:component-scan base-package="com.mycompany.guessthesequence.visual"/>
+   
     
     <aop:aspectj-autoproxy />-->
     
@@ -32,7 +31,7 @@
     </bean>
      
      <bean id="gameJMenu" class="com.mycompany.guessthesequence.visual.GameJMenu" >
-         
+         <property name="recordDao" ref="recordDao" />         
      </bean>
      
     

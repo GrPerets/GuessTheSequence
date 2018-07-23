@@ -11,12 +11,15 @@ import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 
 /**
  *
  * @author grperets
  */
+@Component("startJPanel")
 public class StartJPanelImpl extends JPanel implements StartJPanel{
     
     private final GridBagLayout gbl;
@@ -74,7 +77,7 @@ public class StartJPanelImpl extends JPanel implements StartJPanel{
     public GameJFrame getGameJFrame() {
         return gameJFrame;
     }
-
+    @Autowired
     public void setGameJFrame(GameJFrame gameJFrame) {
         this.gameJFrame = gameJFrame;
     }
@@ -83,7 +86,7 @@ public class StartJPanelImpl extends JPanel implements StartJPanel{
     public CollectionSizeJSlider getCollectionSizeJSlider() {
         return collectionSizeJSlider;
     }
-
+    @Autowired
     public void setCollectionSizeJSlider(CollectionSizeJSlider collectionSizeJSlider) {
          this.collectionSizeJSlider = collectionSizeJSlider;
                
@@ -131,7 +134,7 @@ public class StartJPanelImpl extends JPanel implements StartJPanel{
     public DefineSizeJSlider getDefineSizeJSlider() {
         return defineSizeJSlider;
     }
-
+    @Autowired
     public void setDefineSizeJSlider(DefineSizeJSlider defineSizeJSlider) {
         this.defineSizeJSlider = defineSizeJSlider;
         //Управление сложностью
@@ -177,7 +180,7 @@ public class StartJPanelImpl extends JPanel implements StartJPanel{
     public JButton getStartJButton() {
         return startJButton;
     }
-    
+    @Autowired
     public void setStartJButton(JButton startJButton) {
         this.startJButton = startJButton;
         //Кнопка старта игры

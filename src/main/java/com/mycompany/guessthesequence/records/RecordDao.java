@@ -5,12 +5,14 @@
  */
 package com.mycompany.guessthesequence.records;
 
+import java.util.List;
+
 /**
  *
  * @author grperets
  */
 public interface RecordDao {
-    Record findBest();
+    List<Record> findAll();
     void insert(Record record);
     
 }

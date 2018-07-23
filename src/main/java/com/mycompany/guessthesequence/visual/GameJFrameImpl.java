@@ -25,15 +25,10 @@ import org.springframework.stereotype.Component;
 public class GameJFrameImpl extends JFrame implements GameJFrame, InitializingBean{
     
     private Dimension dimension;
-    @Autowired
     private StartJPanel startJPanel;
-    @Autowired
     private PlayJPanel playJPanel;
-    
     private JPanel actionJPanel;
-    @Autowired
     private LevelOfPlay levelOfPlay;
-    @Autowired
     private CollectionElements collectionElements;
     private long timeStart;
     
@@ -62,7 +57,7 @@ public class GameJFrameImpl extends JFrame implements GameJFrame, InitializingBe
     public CollectionElements getCollectionElements() {
         return collectionElements;
     }
-
+    @Autowired
     public void setCollectionElements(CollectionElements collectionElements) {
         this.collectionElements = collectionElements;
     }
@@ -72,7 +67,7 @@ public class GameJFrameImpl extends JFrame implements GameJFrame, InitializingBe
     public LevelOfPlay getLevelOfPlay() {
         return levelOfPlay;
     }
-
+    @Autowired
     public void setLevelOfPlay(LevelOfPlay levelOfPlay) {
         this.levelOfPlay = levelOfPlay;
     }
@@ -94,7 +89,7 @@ public class GameJFrameImpl extends JFrame implements GameJFrame, InitializingBe
     public StartJPanel getStartJPanel() {
         return startJPanel;
     }
-
+    @Autowired
     public void setStartJPanel(StartJPanel startJPanel) {
         this.startJPanel = startJPanel;
     }
@@ -102,7 +97,7 @@ public class GameJFrameImpl extends JFrame implements GameJFrame, InitializingBe
     public PlayJPanel getPlayJPanel() {
         return playJPanel;
     }
-
+    @Autowired
     public void setPlayJPanel(PlayJPanel playJPanel) {
         this.playJPanel = playJPanel;
     }

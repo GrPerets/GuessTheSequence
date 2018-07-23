@@ -28,9 +28,7 @@ public class AnswersJPanelImpl extends JPanel implements AnswersJPanel, ActionLi
     private GridBagConstraints gbc;
     private ImageIcon image;
     private JButton[] button;
-    @Autowired
     private ButtonsJPanel buttonsJPanel;
-    @Autowired
     private ResultsJPanel resultsJPanel;
     private LevelOfPlay levelOfPlay;
     private JButton verifyJButton;
@@ -157,7 +155,7 @@ public class AnswersJPanelImpl extends JPanel implements AnswersJPanel, ActionLi
     public ButtonsJPanel getButtonsJPanel() {
         return buttonsJPanel;
     }
-
+    @Autowired
     public void setButtonsJPanel(ButtonsJPanel buttonsJPanel) {
         this.buttonsJPanel = buttonsJPanel;
         
@@ -167,7 +165,7 @@ public class AnswersJPanelImpl extends JPanel implements AnswersJPanel, ActionLi
     public ResultsJPanel getResultsJPanel() {
         return resultsJPanel;
     }
-
+    @Autowired
     public void setResultsJPanel(ResultsJPanel resultsJPanel) {
         this.resultsJPanel = resultsJPanel;
         

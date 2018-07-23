@@ -5,10 +5,13 @@
  */
 package com.mycompany.guessthesequence.records;
 
+import org.springframework.stereotype.Component;
+
 /**
  *
  * @author grperets
  */
+@Component
 public class Record {
     private long id;
     private String nameGamer;
@@ -61,7 +64,7 @@ public class Record {
     
     @Override
     public String toString(){
-        return null;        
+        return nameGamer+" "+defineSize+" "+collectionSize+" "+timeGame;        
     }
     
 }
